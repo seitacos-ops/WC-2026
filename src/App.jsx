@@ -68,7 +68,7 @@ const INIT_STATE = {
   eliminated:[],
 }
 
-const fmt = n => n.toLocaleString('ja-JP') + ' VND'
+const fmt = n => n.toLocaleString('ja-JP') + ' WCT'
 const fmtOdds = n => n.toFixed(2) + 'x'
 const WC_START = new Date('2026-06-11T19:00:00-05:00')
 
@@ -103,7 +103,7 @@ function computeWinnings(participants, winner, teamStats, feeRate) {
 }
 function exportCSV(participants, teamStats, odds, winner, feeRate) {
   const winnings = winner?computeWinnings(participants,winner,teamStats,feeRate):[]
-  const rows = [['参加者名','国','口数','投票額(VND)','倍率','当選','受取額(VND)','損益(VND)']]
+  const rows = [['参加者名','国','口数','投票額(WCT)','倍率','当選','受取額(WCT)','損益(WCT)']]
   participants.forEach(p=>p.bets.forEach(b=>{
     const team=TEAMS.find(t=>t.id===b.teamId); const isW=winner===b.teamId
     const w=winnings.find(w=>w.name===p.name&&isW)
@@ -842,7 +842,7 @@ function AdminPage({ state, setState }) {
           <div className="card">
             <div style={{fontWeight:700,marginBottom:16,fontSize:14,letterSpacing:'.04em'}}>基本設定</div>
             <div style={{marginBottom:16}}>
-              <label style={{fontSize:11,color:'var(--text2)',display:'block',marginBottom:10,letterSpacing:'.08em',textTransform:'uppercase'}}>1口単価 (VND)</label>
+              <label style={{fontSize:11,color:'var(--text2)',display:'block',marginBottom:10,letterSpacing:'.08em',textTransform:'uppercase'}}>1口単価 (WCT)</label>
               <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
                 {UNIT_OPTIONS.map(u=><button key={u} className={`btn ${state.settings.unit===u?'btn-gold':'btn-ghost'}`} style={{padding:'8px 14px',fontSize:12}} onClick={()=>doSet(s=>({...s,settings:{...s.settings,unit:u}}))}>{u.toLocaleString()}</button>)}
               </div>
