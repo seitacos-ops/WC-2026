@@ -4,67 +4,68 @@ import { dbLoad, dbSave, dbSubscribe } from './firebase'
 // ─── 管理者パスワード（Vercel環境変数から取得）────────────
 const ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS || 'Samuraiblue'
 
-// ─── TEAMS ───────────────────────────────────────────────
+// ─── TEAMS（2026 W杯 正式48か国・12グループ）────────────
 const TEAMS = [
-  { id: 'JPN', name: '日本',             flag: '🇯🇵', region: 'アジア'  },
-  { id: 'ARG', name: 'アルゼンチン',     flag: '🇦🇷', region: '南米'    },
-  { id: 'BRA', name: 'ブラジル',         flag: '🇧🇷', region: '南米'    },
-  { id: 'FRA', name: 'フランス',         flag: '🇫🇷', region: '欧州'    },
-  { id: 'ENG', name: 'イングランド',     flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', region: '欧州'    },
-  { id: 'ESP', name: 'スペイン',         flag: '🇪🇸', region: '欧州'    },
-  { id: 'GER', name: 'ドイツ',           flag: '🇩🇪', region: '欧州'    },
-  { id: 'POR', name: 'ポルトガル',       flag: '🇵🇹', region: '欧州'    },
-  { id: 'NED', name: 'オランダ',         flag: '🇳🇱', region: '欧州'    },
-  { id: 'BEL', name: 'ベルギー',         flag: '🇧🇪', region: '欧州'    },
-  { id: 'ITA', name: 'イタリア',         flag: '🇮🇹', region: '欧州'    },
-  { id: 'CRO', name: 'クロアチア',       flag: '🇭🇷', region: '欧州'    },
-  { id: 'DEN', name: 'デンマーク',       flag: '🇩🇰', region: '欧州'    },
-  { id: 'SUI', name: 'スイス',           flag: '🇨🇭', region: '欧州'    },
-  { id: 'AUT', name: 'オーストリア',     flag: '🇦🇹', region: '欧州'    },
-  { id: 'SCO', name: 'スコットランド',   flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', region: '欧州'    },
-  { id: 'TUR', name: 'トルコ',           flag: '🇹🇷', region: '欧州'    },
-  { id: 'SRB', name: 'セルビア',         flag: '🇷🇸', region: '欧州'    },
-  { id: 'SVK', name: 'スロバキア',       flag: '🇸🇰', region: '欧州'    },
-  { id: 'HUN', name: 'ハンガリー',       flag: '🇭🇺', region: '欧州'    },
-  { id: 'ALB', name: 'アルバニア',       flag: '🇦🇱', region: '欧州'    },
-  { id: 'SVN', name: 'スロベニア',       flag: '🇸🇮', region: '欧州'    },
-  { id: 'GEO', name: 'ジョージア',       flag: '🇬🇪', region: '欧州'    },
-  { id: 'URU', name: 'ウルグアイ',       flag: '🇺🇾', region: '南米'    },
-  { id: 'COL', name: 'コロンビア',       flag: '🇨🇴', region: '南米'    },
-  { id: 'ECU', name: 'エクアドル',       flag: '🇪🇨', region: '南米'    },
-  { id: 'PAR', name: 'パラグアイ',       flag: '🇵🇾', region: '南米'    },
-  { id: 'CHI', name: 'チリ',             flag: '🇨🇱', region: '南米'    },
-  { id: 'BOL', name: 'ボリビア',         flag: '🇧🇴', region: '南米'    },
-  { id: 'PER', name: 'ペルー',           flag: '🇵🇪', region: '南米'    },
-  { id: 'VEN', name: 'ベネズエラ',       flag: '🇻🇪', region: '南米'    },
-  { id: 'MEX', name: 'メキシコ',         flag: '🇲🇽', region: '北中米'  },
-  { id: 'USA', name: 'アメリカ',         flag: '🇺🇸', region: '北中米'  },
-  { id: 'CAN', name: 'カナダ',           flag: '🇨🇦', region: '北中米'  },
-  { id: 'CRC', name: 'コスタリカ',       flag: '🇨🇷', region: '北中米'  },
-  { id: 'PAN', name: 'パナマ',           flag: '🇵🇦', region: '北中米'  },
-  { id: 'HON', name: 'ホンジュラス',     flag: '🇭🇳', region: '北中米'  },
-  { id: 'JAM', name: 'ジャマイカ',       flag: '🇯🇲', region: '北中米'  },
-  { id: 'TRI', name: 'トリニダード・トバゴ', flag: '🇹🇹', region: '北中米' },
-  { id: 'GUA', name: 'グアテマラ',       flag: '🇬🇹', region: '北中米'  },
-  { id: 'MAR', name: 'モロッコ',         flag: '🇲🇦', region: 'アフリカ'},
-  { id: 'SEN', name: 'セネガル',         flag: '🇸🇳', region: 'アフリカ'},
-  { id: 'EGY', name: 'エジプト',         flag: '🇪🇬', region: 'アフリカ'},
-  { id: 'NGA', name: 'ナイジェリア',     flag: '🇳🇬', region: 'アフリカ'},
-  { id: 'GHA', name: 'ガーナ',           flag: '🇬🇭', region: 'アフリカ'},
-  { id: 'CMR', name: 'カメルーン',       flag: '🇨🇲', region: 'アフリカ'},
-  { id: 'CIV', name: 'コートジボワール', flag: '🇨🇮', region: 'アフリカ'},
-  { id: 'TUN', name: 'チュニジア',       flag: '🇹🇳', region: 'アフリカ'},
-  { id: 'ALG', name: 'アルジェリア',     flag: '🇩🇿', region: 'アフリカ'},
-  { id: 'KOR', name: '韓国',             flag: '🇰🇷', region: 'アジア'  },
-  { id: 'AUS', name: 'オーストラリア',   flag: '🇦🇺', region: 'アジア'  },
-  { id: 'IRN', name: 'イラン',           flag: '🇮🇷', region: 'アジア'  },
-  { id: 'KSA', name: 'サウジアラビア',   flag: '🇸🇦', region: 'アジア'  },
-  { id: 'QAT', name: 'カタール',         flag: '🇶🇦', region: 'アジア'  },
-  { id: 'UZB', name: 'ウズベキスタン',   flag: '🇺🇿', region: 'アジア'  },
-  { id: 'JOR', name: 'ヨルダン',         flag: '🇯🇴', region: 'アジア'  },
-  { id: 'IRQ', name: 'イラク',           flag: '🇮🇶', region: 'アジア'  },
-  { id: 'OMN', name: 'オマーン',         flag: '🇴🇲', region: 'アジア'  },
-  { id: 'NZL', name: 'ニュージーランド', flag: '🇳🇿', region: 'オセアニア'},
+  // Group A
+  { id: 'MEX', name: 'メキシコ',             flag: '🇲🇽', region: 'グループA' },
+  { id: 'RSA', name: '南アフリカ',           flag: '🇿🇦', region: 'グループA' },
+  { id: 'KOR', name: '韓国',                 flag: '🇰🇷', region: 'グループA' },
+  { id: 'CZE', name: 'チェコ',               flag: '🇨🇿', region: 'グループA' },
+  // Group B
+  { id: 'CAN', name: 'カナダ',               flag: '🇨🇦', region: 'グループB' },
+  { id: 'BIH', name: 'ボスニア・ヘルツェゴビナ', flag: '🇧🇦', region: 'グループB' },
+  { id: 'QAT', name: 'カタール',             flag: '🇶🇦', region: 'グループB' },
+  { id: 'SUI', name: 'スイス',               flag: '🇨🇭', region: 'グループB' },
+  // Group C
+  { id: 'BRA', name: 'ブラジル',             flag: '🇧🇷', region: 'グループC' },
+  { id: 'MAR', name: 'モロッコ',             flag: '🇲🇦', region: 'グループC' },
+  { id: 'HAI', name: 'ハイチ',               flag: '🇭🇹', region: 'グループC' },
+  { id: 'SCO', name: 'スコットランド',       flag: '🏴󠁧󠁢󠁳󠁣󠁴󠁿', region: 'グループC' },
+  // Group D
+  { id: 'USA', name: 'アメリカ',             flag: '🇺🇸', region: 'グループD' },
+  { id: 'PAR', name: 'パラグアイ',           flag: '🇵🇾', region: 'グループD' },
+  { id: 'AUS', name: 'オーストラリア',       flag: '🇦🇺', region: 'グループD' },
+  { id: 'TUR', name: 'トルコ',               flag: '🇹🇷', region: 'グループD' },
+  // Group E
+  { id: 'GER', name: 'ドイツ',               flag: '🇩🇪', region: 'グループE' },
+  { id: 'CUW', name: 'キュラソー',           flag: '🇨🇼', region: 'グループE' },
+  { id: 'CIV', name: 'コートジボワール',     flag: '🇨🇮', region: 'グループE' },
+  { id: 'ECU', name: 'エクアドル',           flag: '🇪🇨', region: 'グループE' },
+  // Group F
+  { id: 'NED', name: 'オランダ',             flag: '🇳🇱', region: 'グループF' },
+  { id: 'JPN', name: '日本',                 flag: '🇯🇵', region: 'グループF' },
+  { id: 'SWE', name: 'スウェーデン',         flag: '🇸🇪', region: 'グループF' },
+  { id: 'TUN', name: 'チュニジア',           flag: '🇹🇳', region: 'グループF' },
+  // Group G
+  { id: 'BEL', name: 'ベルギー',             flag: '🇧🇪', region: 'グループG' },
+  { id: 'EGY', name: 'エジプト',             flag: '🇪🇬', region: 'グループG' },
+  { id: 'IRN', name: 'イラン',               flag: '🇮🇷', region: 'グループG' },
+  { id: 'NZL', name: 'ニュージーランド',     flag: '🇳🇿', region: 'グループG' },
+  // Group H
+  { id: 'ESP', name: 'スペイン',             flag: '🇪🇸', region: 'グループH' },
+  { id: 'CPV', name: 'カーボベルデ',         flag: '🇨🇻', region: 'グループH' },
+  { id: 'KSA', name: 'サウジアラビア',       flag: '🇸🇦', region: 'グループH' },
+  { id: 'URU', name: 'ウルグアイ',           flag: '🇺🇾', region: 'グループH' },
+  // Group I
+  { id: 'FRA', name: 'フランス',             flag: '🇫🇷', region: 'グループI' },
+  { id: 'SEN', name: 'セネガル',             flag: '🇸🇳', region: 'グループI' },
+  { id: 'IRQ', name: 'イラク',               flag: '🇮🇶', region: 'グループI' },
+  { id: 'NOR', name: 'ノルウェー',           flag: '🇳🇴', region: 'グループI' },
+  // Group J
+  { id: 'ARG', name: 'アルゼンチン',         flag: '🇦🇷', region: 'グループJ' },
+  { id: 'ALG', name: 'アルジェリア',         flag: '🇩🇿', region: 'グループJ' },
+  { id: 'AUT', name: 'オーストリア',         flag: '🇦🇹', region: 'グループJ' },
+  { id: 'JOR', name: 'ヨルダン',             flag: '🇯🇴', region: 'グループJ' },
+  // Group K
+  { id: 'POR', name: 'ポルトガル',           flag: '🇵🇹', region: 'グループK' },
+  { id: 'COD', name: 'コンゴ民主共和国',     flag: '🇨🇩', region: 'グループK' },
+  { id: 'UZB', name: 'ウズベキスタン',       flag: '🇺🇿', region: 'グループK' },
+  { id: 'COL', name: 'コロンビア',           flag: '🇨🇴', region: 'グループK' },
+  // Group L
+  { id: 'ENG', name: 'イングランド',         flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿', region: 'グループL' },
+  { id: 'CRO', name: 'クロアチア',           flag: '🇭🇷', region: 'グループL' },
+  { id: 'GHA', name: 'ガーナ',               flag: '🇬🇭', region: 'グループL' },
+  { id: 'PAN', name: 'パナマ',               flag: '🇵🇦', region: 'グループL' },
 ]
 
 const UNIT_OPTIONS = [10000, 50000, 100000, 200000, 500000]
@@ -143,7 +144,12 @@ const C = {
   text: '#f0f0f0', textMuted: 'rgba(255,255,255,0.45)', textFaint: 'rgba(255,255,255,0.22)',
   green: '#2ecc71', red: '#e74c3c', blue: '#4a9eff',
 }
-const REGION_COLOR = { '欧州':'#4a9eff','南米':'#2ecc71','北中米':'#f59e0b','アフリカ':'#e74c3c','アジア':'#a855f7','オセアニア':'#06b6d4' }
+const REGION_COLOR = {
+  'グループA':'#ff6b6b','グループB':'#ffa94d','グループC':'#ffe066',
+  'グループD':'#69db7c','グループE':'#38d9a9','グループF':'#4dabf7',
+  'グループG':'#748ffc','グループH':'#da77f2','グループI':'#f783ac',
+  'グループJ':'#a9e34b','グループK':'#63e6be','グループL':'#74c0fc',
+}
 
 const card       = (x={}) => ({ background:C.surface, border:`1px solid ${C.border}`, borderRadius:16, padding:20, marginBottom:14, ...x })
 const btnOrange  = (x={}) => ({ background:`linear-gradient(135deg,${C.orange},${C.orangeLight})`, color:'#fff', border:'none', borderRadius:10, padding:'11px 22px', fontWeight:700, fontSize:14, cursor:'pointer', fontFamily:'inherit', boxShadow:`0 4px 20px ${C.orangeGlow}`, ...x })
