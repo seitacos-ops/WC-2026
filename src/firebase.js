@@ -28,11 +28,8 @@ export async function dbLoad() {
 
 // Firestore にデータを保存する
 export async function dbSave(state) {
-  try {
-    await setDoc(DOC_REF(), { state }, { merge: false })
-  } catch (e) {
-    console.error('dbSave error:', e)
-  }
+  await setDoc(DOC_REF(), { state }, { merge: false })
+  // エラーは呼び出し元でキャッチする（throwして伝える）
 }
 
 // リアルタイム購読（データが変わると callback が呼ばれる）
