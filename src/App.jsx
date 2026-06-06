@@ -447,7 +447,7 @@ function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
         <div className="hero-grid"/>
         <div style={{position:'relative',zIndex:1}}>
           <div className="hero-eyebrow">🏆 FIFA WORLD CUP 2026 • USA • CANADA • MEXICO</div>
-          <h1 className="hero-title">WORLD CUP<br/><span>2026</span><br/>BETTING POOL</h1>
+          <h1 className="hero-title">WORLD CUP<br/><span>2026</span><br/>TOURNAMENT<br/>PREDICTION CHALLENGE</h1>
           <p className="hero-sub">48 NATIONS · 104 MATCHES · 1 CHAMPION</p>
           <div className="hero-badges">
             <span className="hero-badge gold">
