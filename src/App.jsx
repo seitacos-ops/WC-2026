@@ -740,16 +740,26 @@ export default function App() {
     setSyncing(false)
   }
 
-  // setState: ローカル更新 + Firestore保存
+  // setState: ローカル更新 → Firestore保存（順番に確実に実行）
   const setState=useCallback(async(updater)=>{
     setSyncing(true)
-    _setState(prev=>{
-      const next=typeof updater==='function'?updater(prev):updater
-      dbSave(next) // 非同期でFirestoreへ保存
-      setSyncing(false)
+    try {
+      // 次のstateを計算
+      let next
+      _setState(prev=>{
+        next=typeof updater==='function'?updater(prev):updater
+        return next
+      })
+      // ReactのsetStateは同期的にnextを確定させる
+      // その後にFirestoreへ保存
+      await dbSave(next)
       setLastSync(new Date())
-      return next
-    })
+    } catch(e) {
+      console.error('dbSave error:', e)
+      alert('保存に失敗しました。再度お試しください。')
+    } finally {
+      setSyncing(false)
+    }
   },[])
 
   const PAGES=[['top','🏠 TOP'],['register','⚽ 投票'],['status','📊 状況'],['odds','📈 倍率'],['result','🏆 結果'],['admin','⚙️ 管理']]
