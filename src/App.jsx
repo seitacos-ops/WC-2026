@@ -69,7 +69,7 @@ const TEAMS = [
 ]
 
 const UNIT_OPTIONS = [10000, 50000, 100000, 200000, 500000]
-const LOTS_OPTIONS = [1, 2, 3, 5, 10]
+const LOTS_OPTIONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 const fmt = (n) => n.toLocaleString('ja-JP') + ' VND'
 const fmtOdds = (n) => n.toFixed(2) + 'x'
@@ -363,7 +363,9 @@ function RegisterPage({ state, setState }) {
                 <span style={{fontSize:20}}>{team?.flag}</span>
                 <span style={{flex:1,fontSize:13}}>{team?.name}</span>
                 <div style={{display:'flex',gap:3,flexWrap:'wrap'}}>
-                  {LOTS_OPTIONS.map(lot=><button key={lot} onClick={()=>setLots(b.teamId,lot)} style={{padding:'3px 8px',borderRadius:6,border:'none',cursor:'pointer',fontSize:12,fontFamily:'inherit',background:b.lots===lot?C.orange:'rgba(255,255,255,0.06)',color:b.lots===lot?'#fff':C.textMuted,fontWeight:b.lots===lot?700:400}}>{lot}口</button>)}
+                  <div style={{display:'flex',flexWrap:'wrap',gap:3}}>
+                    {LOTS_OPTIONS.map(lot=><button key={lot} onClick={()=>setLots(b.teamId,lot)} style={{padding:'3px 7px',borderRadius:6,border:'none',cursor:'pointer',fontSize:11,fontFamily:'inherit',background:b.lots===lot?C.orange:'rgba(255,255,255,0.06)',color:b.lots===lot?'#fff':C.textMuted,fontWeight:b.lots===lot?700:400,minWidth:28}}>{lot}口</button>)}
+                  </div>
                 </div>
                 <div style={{fontSize:12,color:C.orangeLight,minWidth:80,textAlign:'right'}}>{fmt(b.lots*state.settings.unit)}</div>
                 <button onClick={()=>toggleTeam(b.teamId)} style={{background:'rgba(231,76,60,0.15)',border:'none',borderRadius:6,color:C.red,cursor:'pointer',padding:'3px 7px',fontSize:12}}>✕</button>
