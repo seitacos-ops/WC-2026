@@ -1,6 +1,309 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { dbLoad, dbSave, dbSubscribe } from './firebase'
 
+// ── Stadium Audio Engine ─────────────────────────────────
+class StadiumAudio {
+  constructor() {
+    this.ctx = null
+    this.playing = false
+    this.nodes = []
+    this.volume = 0.5
+  }
+
+  init() {
+    if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)()
+    if (this.ctx.state === 'suspended') this.ctx.resume()
+  }
+
+  master() {
+    const g = this.ctx.createGain()
+    g.gain.value = this.volume
+    g.connect(this.ctx.destination)
+    return g
+  }
+
+  // ── ホワイトノイズ（群衆のざわめき）
+  crowd(duration = 999) {
+    const buf = this.ctx.createBuffer(1, this.ctx.sampleRate * duration, this.ctx.sampleRate)
+    const d = buf.getChannelData(0)
+    for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * 0.18
+    const src = this.ctx.createBufferSource()
+    src.buffer = buf
+    src.loop = true
+    const lpf = this.ctx.createBiquadFilter()
+    lpf.type = 'lowpass'; lpf.frequency.value = 800
+    const hpf = this.ctx.createBiquadFilter()
+    hpf.type = 'highpass'; hpf.frequency.value = 120
+    const gain = this.ctx.createGain()
+    gain.gain.value = 1
+    // うねり（波打つ感じ）
+    const lfo = this.ctx.createOscillator()
+    const lfoGain = this.ctx.createGain()
+    lfo.frequency.value = 0.12; lfoGain.gain.value = 0.3
+    lfo.connect(lfoGain); lfoGain.connect(gain.gain)
+    lfo.start()
+    src.connect(hpf); hpf.connect(lpf); lpf.connect(gain); gain.connect(this.master())
+    src.start()
+    this.nodes.push(src, lfo)
+    return src
+  }
+
+  // ── チャント（繰り返しリズム）
+  chant() {
+    const freqs = [220, 220, 330, 220, 165]
+    const times = [0, 0.5, 1.0, 1.5, 2.2]
+    const repeat = () => {
+      if (!this.playing) return
+      freqs.forEach((f, i) => {
+        const t = this.ctx.currentTime + times[i]
+        const osc = this.ctx.createOscillator()
+        const gain = this.ctx.createGain()
+        osc.type = 'sawtooth'; osc.frequency.value = f
+        gain.gain.setValueAtTime(0, t)
+        gain.gain.linearRampToValueAtTime(0.06, t + 0.05)
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.38)
+        osc.connect(gain); gain.connect(this.master())
+        osc.start(t); osc.stop(t + 0.4)
+      })
+      this.chantTimer = setTimeout(repeat, 3200)
+    }
+    repeat()
+  }
+
+  // ── ドラム（ビート）
+  drum() {
+    const kick = (t) => {
+      const osc = this.ctx.createOscillator()
+      const gain = this.ctx.createGain()
+      osc.frequency.setValueAtTime(160, t)
+      osc.frequency.exponentialRampToValueAtTime(40, t + 0.15)
+      gain.gain.setValueAtTime(0.5, t)
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.3)
+      osc.connect(gain); gain.connect(this.master())
+      osc.start(t); osc.stop(t + 0.35)
+    }
+    const snare = (t) => {
+      const buf = this.ctx.createBuffer(1, this.ctx.sampleRate * 0.15, this.ctx.sampleRate)
+      const d = buf.getChannelData(0)
+      for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (this.ctx.sampleRate * 0.05))
+      const src = this.ctx.createBufferSource()
+      src.buffer = buf
+      const gain = this.ctx.createGain(); gain.gain.value = 0.18
+      src.connect(gain); gain.connect(this.master())
+      src.start(t)
+    }
+    const pattern = () => {
+      if (!this.playing) return
+      const now = this.ctx.currentTime
+      const bpm = 128; const beat = 60 / bpm
+      kick(now); kick(now + beat * 2)
+      snare(now + beat); snare(now + beat * 3)
+      this.drumTimer = setTimeout(pattern, beat * 4 * 1000)
+    }
+    pattern()
+  }
+
+  // ── 優勝ファンファーレ（結果ページ）
+  fanfare() {
+    this.init()
+    // 歓声
+    const buf = this.ctx.createBuffer(1, this.ctx.sampleRate * 2, this.ctx.sampleRate)
+    const d = buf.getChannelData(0)
+    for (let i = 0; i < d.length; i++) {
+      const env = Math.min(i / (this.ctx.sampleRate * 0.3), 1) * Math.exp(-i / (this.ctx.sampleRate * 0.8))
+      d[i] = (Math.random() * 2 - 1) * env * 0.5
+    }
+    const src = this.ctx.createBufferSource(); src.buffer = buf
+    const gain = this.ctx.createGain(); gain.gain.value = 1
+    src.connect(gain); gain.connect(this.ctx.destination); src.start()
+    // ファンファーレ旋律（勝利っぽいメロディ）
+    const melody = [
+      [523,0],[523,0.2],[523,0.4],[659,0.6],[784,0.9],
+      [784,1.1],[784,1.3],[1047,1.6],[784,2.0],[659,2.3],[523,2.7]
+    ]
+    melody.forEach(([freq, when]) => {
+      const t = this.ctx.currentTime + when
+      const osc = this.ctx.createOscillator()
+      const g = this.ctx.createGain()
+      osc.type = 'triangle'; osc.frequency.value = freq
+      g.gain.setValueAtTime(0, t)
+      g.gain.linearRampToValueAtTime(0.18, t + 0.04)
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.38)
+      osc.connect(g); g.connect(this.ctx.destination)
+      osc.start(t); osc.stop(t + 0.4)
+    })
+    this.whistle(0); this.whistle(0.5)
+  }
+
+  // ── 大歓声（優勝確定）
+  bigRoar() {
+    this.init()
+    // 巨大な歓声
+    for (let wave = 0; wave < 3; wave++) {
+      const delay = wave * 0.8
+      const buf = this.ctx.createBuffer(1, this.ctx.sampleRate * 3, this.ctx.sampleRate)
+      const d = buf.getChannelData(0)
+      for (let i = 0; i < d.length; i++) {
+        const env = Math.min(i / (this.ctx.sampleRate * 0.15), 1) * Math.exp(-i / (this.ctx.sampleRate * (1.5 + wave * 0.3)))
+        d[i] = (Math.random() * 2 - 1) * env * (0.8 - wave * 0.1)
+      }
+      const src = this.ctx.createBufferSource(); src.buffer = buf
+      const lpf = this.ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 1400
+      const gain = this.ctx.createGain(); gain.gain.value = 1
+      src.connect(lpf); lpf.connect(gain); gain.connect(this.ctx.destination)
+      src.start(this.ctx.currentTime + delay)
+    }
+    // ホイッスル5連発
+    [0, 0.5, 1.0, 2.2, 2.8].forEach(t => this.whistle(t))
+    // ファンファーレ的な音
+    const fanfareNotes = [523, 659, 784, 1047, 784, 1047]
+    const fanfareTimes = [1.5, 1.7, 1.9, 2.1, 2.4, 2.6]
+    fanfareNotes.forEach((freq, i) => {
+      const t = this.ctx.currentTime + fanfareTimes[i]
+      const osc = this.ctx.createOscillator()
+      const gain = this.ctx.createGain()
+      osc.type = 'triangle'; osc.frequency.value = freq
+      gain.gain.setValueAtTime(0, t)
+      gain.gain.linearRampToValueAtTime(0.15, t + 0.03)
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.35)
+      osc.connect(gain); gain.connect(this.ctx.destination)
+      osc.start(t); osc.stop(t + 0.4)
+    })
+  }
+
+  // ── ホイッスル
+  whistle(when = 0) {
+    const t = this.ctx.currentTime + when
+    const osc = this.ctx.createOscillator()
+    const gain = this.ctx.createGain()
+    osc.type = 'sine'; osc.frequency.value = 2600
+    osc.frequency.setValueAtTime(2600, t)
+    osc.frequency.linearRampToValueAtTime(2800, t + 0.08)
+    osc.frequency.linearRampToValueAtTime(2500, t + 0.35)
+    gain.gain.setValueAtTime(0, t)
+    gain.gain.linearRampToValueAtTime(0.22, t + 0.02)
+    gain.gain.setValueAtTime(0.22, t + 0.25)
+    gain.gain.linearRampToValueAtTime(0, t + 0.45)
+    osc.connect(gain); gain.connect(this.master())
+    osc.start(t); osc.stop(t + 0.5)
+  }
+
+  // ── 歓声（ゴール！）
+  roar() {
+    this.init()
+    const buf = this.ctx.createBuffer(1, this.ctx.sampleRate * 2.5, this.ctx.sampleRate)
+    const d = buf.getChannelData(0)
+    for (let i = 0; i < d.length; i++) {
+      const env = Math.min(i / (this.ctx.sampleRate * 0.2), 1) * Math.exp(-i / (this.ctx.sampleRate * 1.2))
+      d[i] = (Math.random() * 2 - 1) * env * 0.7
+    }
+    const src = this.ctx.createBufferSource(); src.buffer = buf
+    const lpf = this.ctx.createBiquadFilter(); lpf.type = 'lowpass'; lpf.frequency.value = 1200
+    const gain = this.ctx.createGain(); gain.gain.value = 1
+    src.connect(lpf); lpf.connect(gain); gain.connect(this.master())
+    src.start()
+    // ホイッスル × 3
+    this.whistle(0); this.whistle(0.6); this.whistle(1.1)
+  }
+
+  start() {
+    this.init()
+    if (this.playing) return
+    this.playing = true
+    this._everStarted = true
+    this.crowd()
+    setTimeout(() => { if (this.playing) this.chant() }, 800)
+    setTimeout(() => { if (this.playing) this.drum() }, 400)
+  }
+
+  stop() {
+    this.playing = false
+    clearTimeout(this.chantTimer)
+    clearTimeout(this.drumTimer)
+    this.nodes.forEach(n => { try { n.stop() } catch {} })
+    this.nodes = []
+  }
+
+  setVolume(v) {
+    this.volume = v
+  }
+}
+
+const stadiumAudio = new StadiumAudio()
+
+// ── Audio Player Component ────────────────────────────────
+function AudioPlayer() {
+  const [on, setOn] = useState(false)
+  const [vol, setVol] = useState(0.5)
+  const [showVol, setShowVol] = useState(false)
+
+  const toggle = () => {
+    if (on) {
+      stadiumAudio.stop()
+      setOn(false)
+    } else {
+      stadiumAudio.start()
+      setOn(true)
+    }
+  }
+
+  const changeVol = (v) => {
+    setVol(v)
+    stadiumAudio.setVolume(v)
+  }
+
+  const goal = () => stadiumAudio.roar()
+
+  return (
+    <div style={{
+      position: 'fixed', bottom: 20, right: 20, zIndex: 300,
+      display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8,
+    }}>
+      {/* ボリュームスライダー */}
+      {showVol && on && (
+        <div style={{
+          background: 'rgba(13,21,38,0.95)', border: '1px solid rgba(0,212,255,0.25)',
+          borderRadius: 14, padding: '12px 14px', backdropFilter: 'blur(12px)',
+          display: 'flex', flexDirection: 'column', gap: 8, minWidth: 160,
+          boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+        }}>
+          <div style={{ fontSize: 11, color: 'var(--text2)', letterSpacing: '.08em', fontWeight: 600 }}>🔊 VOLUME</div>
+          <input type="range" min="0" max="1" step="0.05" value={vol}
+            onChange={e => changeVol(parseFloat(e.target.value))}
+            style={{ width: '100%', accentColor: 'var(--gold)', cursor: 'pointer' }}
+          />
+          <button onClick={goal} style={{
+            background: 'linear-gradient(135deg,var(--gold),var(--gold2))', border: 'none',
+            borderRadius: 8, padding: '7px', cursor: 'pointer', fontSize: 13,
+            fontFamily: 'inherit', fontWeight: 700, color: '#0a0a0a',
+          }}>⚽ GOAL！歓声</button>
+        </div>
+      )}
+
+      {/* メインボタン */}
+      <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        {on && (
+          <button onClick={() => setShowVol(!showVol)} style={{
+            width: 40, height: 40, borderRadius: '50%', border: '1px solid rgba(0,212,255,0.3)',
+            background: 'rgba(13,21,38,0.9)', color: 'var(--blue)', cursor: 'pointer',
+            fontSize: 16, backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>🎚️</button>
+        )}
+        <button onClick={toggle} style={{
+          width: 52, height: 52, borderRadius: '50%', border: `2px solid ${on ? 'var(--gold)' : 'rgba(255,255,255,0.15)'}`,
+          background: on ? 'rgba(255,215,0,0.15)' : 'rgba(13,21,38,0.9)',
+          color: on ? 'var(--gold)' : 'var(--text2)', cursor: 'pointer',
+          fontSize: 22, backdropFilter: 'blur(8px)', transition: 'all .25s',
+          boxShadow: on ? '0 0 24px rgba(255,215,0,0.3)' : 'none',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+        }}>
+          {on ? '🔊' : '🔇'}
+        </button>
+      </div>
+    </div>
+  )
+}
+
 // ── Admin password ────────────────────────────────────────
 const ADMIN_PASS = import.meta.env.VITE_ADMIN_PASS || 'Samuraiblue'
 
@@ -432,6 +735,15 @@ function SurvivalBoard({ state, stats }) {
 
 // ── Page: TOP ─────────────────────────────────────────────
 function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
+  useEffect(() => {
+    // TOPページを開いたとき、すでに音楽ONなら何もしない（ユーザー操作後のみ有効）
+    // AudioPlayerのstartedフラグを参照
+    if (stadiumAudio.playing) return
+    // ユーザーが一度でも音楽をONにしたことがあればBGM自動再開
+    if (stadiumAudio._everStarted) {
+      stadiumAudio.start()
+    }
+  }, [])
   const stats=computeStats(state.participants)
   const {odds,totalPool,netPool}=computeOdds(stats,state.settings.feeRate)
   const topTeams=[...TEAMS].filter(t=>stats[t.id].lots>0).sort((a,b)=>stats[b.id].amount-stats[a.id].amount).slice(0,5)
@@ -559,7 +871,9 @@ function RegisterPage({ state, setState }) {
     const fb=bets.map(b=>({teamId:b.teamId,lots:b.lots,amount:b.lots*state.settings.unit}))
     const newP={...participant,bets:fb}
     await setState(s=>({...s,participants:s.participants.find(p=>p.id===newP.id)?s.participants.map(p=>p.id===newP.id?newP:p):[...s.participants,newP]}))
-    setSaving(false); setStep('done')
+    setSaving(false)
+    stadiumAudio.roar() // 投票完了 → 歓声
+    setStep('done')
   }
 
   const allGroups=['全て',...GROUPS]
@@ -936,7 +1250,7 @@ function AdminPage({ state, setState }) {
               const isJPN=team.id==='JPN'; const isSel=state.winner===team.id
               return(
                 <div key={team.id} className={`winner-card${isSel?' selected':''}${isJPN?' jpn':''}`}
-                  onClick={()=>{if(window.confirm(`「${team.name}」を優勝国に確定しますか？`))doSet(s=>({...s,winner:team.id,status:'finished'}))}}>
+                  onClick={()=>{if(window.confirm(`「${team.name}」を優勝国に確定しますか？`)){doSet(s=>({...s,winner:team.id,status:'finished'}));stadiumAudio.bigRoar()}}}>
                   <div style={{fontSize:22}}>{team.flag}</div>
                   <div style={{fontSize:9,marginTop:3,lineHeight:1.3,color:isJPN?'var(--blue)':'var(--text3)'}}>{team.name}</div>
                 </div>
@@ -952,6 +1266,13 @@ function AdminPage({ state, setState }) {
 
 // ── Page: RESULT ──────────────────────────────────────────
 function ResultPage({ state }) {
+  useEffect(() => {
+    if (state.winner) {
+      // 少し遅らせてファンファーレ
+      const t = setTimeout(() => stadiumAudio.fanfare(), 600)
+      return () => clearTimeout(t)
+    }
+  }, [state.winner])
   const stats=computeStats(state.participants)
   const {odds,totalPool,netPool}=computeOdds(stats,state.settings.feeRate)
   const winnings=state.winner?computeWinnings(state.participants,state.winner,stats,state.settings.feeRate):[]
@@ -1087,6 +1408,7 @@ export default function App() {
       {page==='odds'     &&<OddsPage     state={state}/>}
       {page==='result'   &&<ResultPage   state={state}/>}
       {page==='admin'    &&<AdminPage    state={state} setState={setState}/>}
+      <AudioPlayer/>
     </>
   )
 }
