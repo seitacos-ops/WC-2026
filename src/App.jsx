@@ -80,6 +80,7 @@ const INIT_STATE = {
   participants: [],
   winner: null,
   status: 'open',
+  eliminated: [], // 敗退国IDの配列
 }
 
 // ─── HELPERS ─────────────────────────────────────────────
@@ -184,6 +185,112 @@ function SyncDot({ syncing }) {
   )
 }
 
+// ─── SURVIVAL BOARD ─────────────────────────────────────
+function SurvivalBoard({ state, stats }) {
+  const eliminated = state.eliminated || []
+  const survived = TEAMS.filter(t => !eliminated.includes(t.id))
+  const eliminatedTeams = TEAMS.filter(t => eliminated.includes(t.id))
+
+  // 勝ち残り国に投票している参加者を取得
+  const survivorParticipants = state.participants.map(p => {
+    const aliveBets = p.bets.filter(b => !eliminated.includes(b.teamId))
+    const deadBets  = p.bets.filter(b =>  eliminated.includes(b.teamId))
+    return { ...p, aliveBets, deadBets, isAlive: aliveBets.length > 0 }
+  }).sort((a,b) => b.isAlive - a.isAlive)
+
+  return (
+    <div style={{...card(), border:`1px solid rgba(46,204,113,0.25)`, marginBottom:14}}>
+      <div style={secTitle}>🏟️ 勝ち残り状況</div>
+
+      {/* 進捗バー */}
+      <div style={{marginBottom:16}}>
+        <div style={{display:'flex',justifyContent:'space-between',fontSize:12,marginBottom:6}}>
+          <span style={{color:C.green,fontWeight:700}}>✅ 勝ち残り {survived.length}か国</span>
+          <span style={{color:C.red,fontWeight:700}}>❌ 敗退 {eliminatedTeams.length}か国</span>
+        </div>
+        <div style={{height:8,background:'rgba(255,255,255,0.06)',borderRadius:4,overflow:'hidden'}}>
+          <div style={{height:'100%',width:`${(survived.length/TEAMS.length)*100}%`,background:'linear-gradient(90deg,#2ecc71,#27ae60)',borderRadius:4,transition:'width 0.5s'}}/>
+        </div>
+        <div style={{fontSize:11,color:C.textFaint,marginTop:4,textAlign:'right'}}>{TEAMS.length}か国中 {survived.length}か国が勝ち残り</div>
+      </div>
+
+      {/* 勝ち残り国 */}
+      <div style={{marginBottom:14}}>
+        <div style={{fontSize:12,color:C.green,fontWeight:700,marginBottom:8}}>✅ 勝ち残り中</div>
+        <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
+          {survived.map(t => {
+            const hasVoter = stats[t.id]?.voters > 0
+            const isJPN = t.id==='JPN'
+            return (
+              <div key={t.id} style={{
+                display:'flex',alignItems:'center',gap:4,
+                background: isJPN?'rgba(74,158,255,0.15)':'rgba(46,204,113,0.1)',
+                border:`1.5px solid ${isJPN?'rgba(74,158,255,0.4)':'rgba(46,204,113,0.3)'}`,
+                borderRadius:20,padding:'4px 10px',
+              }}>
+                <span style={{fontSize:16}}>{t.flag}</span>
+                <span style={{fontSize:12,fontWeight:hasVoter?700:400,color:isJPN?'#4a9eff':C.text}}>{t.name}</span>
+                {hasVoter && <span style={{fontSize:10,color:C.green,fontWeight:700}}>{stats[t.id].voters}人</span>}
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* 敗退国 */}
+      {eliminatedTeams.length > 0 && (
+        <div style={{marginBottom:14}}>
+          <div style={{fontSize:12,color:C.red,fontWeight:700,marginBottom:8}}>❌ 敗退</div>
+          <div style={{display:'flex',flexWrap:'wrap',gap:5}}>
+            {eliminatedTeams.map(t => (
+              <div key={t.id} style={{
+                display:'flex',alignItems:'center',gap:4,
+                background:'rgba(231,76,60,0.06)',
+                border:'1.5px solid rgba(231,76,60,0.2)',
+                borderRadius:20,padding:'3px 8px',opacity:0.6,
+              }}>
+                <span style={{fontSize:14,filter:'grayscale(100%)'}}>{t.flag}</span>
+                <span style={{fontSize:11,color:C.textMuted,textDecoration:'line-through'}}>{t.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 参加者の生き残り状況 */}
+      <div>
+        <div style={{fontSize:12,color:C.textMuted,fontWeight:700,marginBottom:8}}>👥 参加者の状況</div>
+        <div style={{display:'flex',flexDirection:'column',gap:6}}>
+          {survivorParticipants.map(p => (
+            <div key={p.name} style={{
+              display:'flex',alignItems:'center',gap:8,
+              padding:'8px 12px',borderRadius:10,
+              background: p.isAlive?'rgba(46,204,113,0.07)':'rgba(231,76,60,0.07)',
+              border:`1px solid ${p.isAlive?'rgba(46,204,113,0.2)':'rgba(231,76,60,0.15)'}`,
+            }}>
+              <span style={{fontSize:16}}>{p.isAlive?'🟢':'🔴'}</span>
+              <span style={{fontWeight:700,fontSize:13,flex:1,color:p.isAlive?C.text:C.textMuted}}>{p.name}</span>
+              <div style={{display:'flex',flexWrap:'wrap',gap:3,justifyContent:'flex-end'}}>
+                {p.aliveBets.map(b=>{
+                  const t=TEAMS.find(t=>t.id===b.teamId)
+                  return <span key={b.teamId} title={t?.name} style={{fontSize:16}}>{t?.flag}</span>
+                })}
+                {p.deadBets.map(b=>{
+                  const t=TEAMS.find(t=>t.id===b.teamId)
+                  return <span key={b.teamId} title={`${t?.name}（敗退）`} style={{fontSize:14,filter:'grayscale(100%)',opacity:0.4}}>{t?.flag}</span>
+                })}
+              </div>
+              <span style={{fontSize:11,fontWeight:700,color:p.isAlive?C.green:C.red,minWidth:44,textAlign:'right'}}>
+                {p.isAlive?`${p.aliveBets.length}国残`:'敗退'}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ─── PAGE: TOP ───────────────────────────────────────────
 function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
   const stats = computeStats(state.participants)
@@ -229,6 +336,11 @@ function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
           </div>
         ))}
       </div>
+
+      {/* 勝ち残り状況 */}
+      {(state.eliminated||[]).length > 0 && (
+        <SurvivalBoard state={state} stats={stats} />
+      )}
 
       {/* POPULAR */}
       {topTeams.length > 0 && (
@@ -558,7 +670,7 @@ function AdminPage({ state, setState }) {
         {saving&&<span style={{fontSize:12,color:'#f59e0b'}}>💾 保存・共有中…</span>}
       </div>
       <div style={{display:'flex',gap:5,marginBottom:18,flexWrap:'wrap'}}>
-        {[['settings','設定'],['participants','参加者管理'],['winner','優勝国設定']].map(([k,l])=><NavBtn key={k} active={tab===k} onClick={()=>setTab(k)}>{l}</NavBtn>)}
+        {[['settings','設定'],['participants','参加者管理'],['eliminated','敗退国管理'],['winner','優勝国設定']].map(([k,l])=><NavBtn key={k} active={tab===k} onClick={()=>setTab(k)}>{l}</NavBtn>)}
       </div>
 
       {tab==='settings'&&(
@@ -615,6 +727,67 @@ function AdminPage({ state, setState }) {
             </div>
           ))}
         </>
+      )}
+
+      {tab==='eliminated'&&(
+        <div style={card()}>
+          <div style={{fontWeight:600,marginBottom:8,fontSize:14}}>❌ 敗退国を登録・解除</div>
+          <div style={{fontSize:12,color:C.textMuted,marginBottom:16,lineHeight:1.7}}>
+            タップで敗退／勝ち残りを切り替えます。<br/>
+            登録するとTOPページの「勝ち残り状況」に反映されます。
+          </div>
+          {/* グループ別に表示 */}
+          {['グループA','グループB','グループC','グループD','グループE','グループF',
+            'グループG','グループH','グループI','グループJ','グループK','グループL'].map(grp=>{
+            const grpTeams = TEAMS.filter(t=>t.region===grp)
+            return (
+              <div key={grp} style={{marginBottom:16}}>
+                <div style={{fontSize:12,fontWeight:700,color:REGION_COLOR[grp]||C.textMuted,marginBottom:8,letterSpacing:'0.05em'}}>
+                  {grp}
+                </div>
+                <div style={{display:'flex',flexWrap:'wrap',gap:6}}>
+                  {grpTeams.map(team=>{
+                    const isElim=(state.eliminated||[]).includes(team.id)
+                    const isJPN=team.id==='JPN'
+                    return (
+                      <div key={team.id}
+                        onClick={()=>doSet(s=>({
+                          ...s,
+                          eliminated: isElim
+                            ? (s.eliminated||[]).filter(id=>id!==team.id)
+                            : [...(s.eliminated||[]), team.id]
+                        }))}
+                        style={{
+                          display:'flex',alignItems:'center',gap:5,
+                          padding:'6px 12px',borderRadius:20,cursor:'pointer',
+                          border:`2px solid ${isElim?'rgba(231,76,60,0.5)':isJPN?'rgba(74,158,255,0.4)':'rgba(46,204,113,0.3)'}`,
+                          background: isElim?'rgba(231,76,60,0.1)':isJPN?'rgba(74,158,255,0.1)':'rgba(46,204,113,0.08)',
+                          opacity: isElim?0.6:1,
+                          transition:'all 0.15s',
+                        }}>
+                        <span style={{fontSize:18,filter:isElim?'grayscale(100%)':'none'}}>{team.flag}</span>
+                        <span style={{fontSize:12,fontWeight:600,
+                          color:isElim?C.textFaint:isJPN?'#4a9eff':C.text,
+                          textDecoration:isElim?'line-through':'none'}}>
+                          {team.name}
+                        </span>
+                        <span style={{fontSize:11,fontWeight:700,color:isElim?C.red:C.green}}>
+                          {isElim?'❌':'✅'}
+                        </span>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          })}
+          {(state.eliminated||[]).length>0&&(
+            <button style={btnDanger({marginTop:8,width:'100%'})}
+              onClick={()=>{if(window.confirm('全ての敗退国をリセットしますか？'))doSet(s=>({...s,eliminated:[]}))}}>
+              🔄 敗退国をすべてリセット
+            </button>
+          )}
+        </div>
       )}
 
       {tab==='winner'&&(
