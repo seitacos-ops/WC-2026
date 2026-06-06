@@ -740,19 +740,20 @@ export default function App() {
     setSyncing(false)
   }
 
-  // setState: ローカル更新 → Firestore保存（順番に確実に実行）
+  // setState: stateRefで確実に最新値を取得してFirestoreへ保存
+  const stateRef = useRef(state)
+  useEffect(()=>{ stateRef.current = state },[state])
+
   const setState=useCallback(async(updater)=>{
     setSyncing(true)
     try {
-      // 次のstateを計算
-      let next
-      _setState(prev=>{
-        next=typeof updater==='function'?updater(prev):updater
-        return next
-      })
-      // ReactのsetStateは同期的にnextを確定させる
-      // その後にFirestoreへ保存
+      // updaterで次のstateを計算（stateRefから現在値を取得）
+      const prev = stateRef.current
+      const next = typeof updater==='function' ? updater(prev) : updater
+      // 先にFirestoreへ保存（確実に）
       await dbSave(next)
+      // 保存成功後にローカルstateを更新
+      _setState(next)
       setLastSync(new Date())
     } catch(e) {
       console.error('dbSave error:', e)
