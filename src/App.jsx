@@ -655,163 +655,163 @@ const SQUADS = {
 // ── Schedule Data 公式（日本時間JST/ベトナム時間ICT）──────
 // JST = UTC+9, ICT = JST - 2時間
 const SCHEDULE = [
-  // ========== グループステージ 第1節 ==========
+  // ===== グループステージ 第1節 =====
   // 6/12(金)
-  {group:'グループA', date:'2026-06-12', timeJST:'04:00', timeVN:'02:00', home:'MEX', away:'RSA', venue:'エスタディオ・アステカ (Mexico City)', stage:'グループステージ 第1節'},
-  {group:'グループB', date:'2026-06-12', timeJST:'04:00', timeVN:'02:00', home:'CAN', away:'BIH', venue:'BMO フィールド (Toronto)', stage:'グループステージ 第1節'},
+  {group:'グループA',date:'2026-06-12',timeJST:'04:00',timeVN:'02:00',home:'MEX',away:'RSA',venue:'エスタディオ・アステカ (Mexico City)',stage:'グループステージ 第1節'},
+  {group:'グループB',date:'2026-06-12',timeJST:'04:00',timeVN:'02:00',home:'CAN',away:'BIH',venue:'BMO フィールド (Toronto)',stage:'グループステージ 第1節'},
   // 6/13(土)
-  {group:'グループB', date:'2026-06-13', timeJST:'04:00', timeVN:'02:00', home:'QAT', away:'SUI', venue:"Levi's スタジアム (San Francisco)", stage:'グループステージ 第1節'},
-  {group:'グループC', date:'2026-06-13', timeJST:'07:00', timeVN:'05:00', home:'BRA', away:'MAR', venue:'メットライフ・スタジアム (New York)', stage:'グループステージ 第1節'},
-  {group:'グループD', date:'2026-06-13', timeJST:'10:00', timeVN:'08:00', home:'USA', away:'PAR', venue:'SoFi スタジアム (Los Angeles)', stage:'グループステージ 第1節'},
-  {group:'グループC', date:'2026-06-13', timeJST:'10:00', timeVN:'08:00', home:'HAI', away:'SCO', venue:'ジレット・スタジアム (Foxborough)', stage:'グループステージ 第1節'},
+  {group:'グループB',date:'2026-06-13',timeJST:'04:00',timeVN:'02:00',home:'QAT',away:'SUI',venue:"Levi's スタジアム (San Francisco)",stage:'グループステージ 第1節'},
+  {group:'グループC',date:'2026-06-13',timeJST:'07:00',timeVN:'05:00',home:'BRA',away:'MAR',venue:'メットライフ・スタジアム (New York)',stage:'グループステージ 第1節'},
+  {group:'グループD',date:'2026-06-13',timeJST:'10:00',timeVN:'08:00',home:'USA',away:'PAR',venue:'SoFiスタジアム (Los Angeles)',stage:'グループステージ 第1節'},
+  {group:'グループC',date:'2026-06-13',timeJST:'10:00',timeVN:'08:00',home:'HAI',away:'SCO',venue:'ジレット・スタジアム (Foxborough)',stage:'グループステージ 第1節'},
   // 6/14(日)
-  {group:'グループE', date:'2026-06-14', timeJST:'02:00', timeVN:'00:00', home:'GER', away:'CUW', venue:'NRG スタジアム (Houston)', stage:'グループステージ 第1節'},
-  {group:'グループF', date:'2026-06-14', timeJST:'05:00', timeVN:'03:00', home:'NED', away:'JPN', venue:'AT&T スタジアム (Arlington)', stage:'グループステージ 第1節'},
-  {group:'グループD', date:'2026-06-14', timeJST:'08:00', timeVN:'06:00', home:'AUS', away:'TUR', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'グループステージ 第1節'},
-  {group:'グループE', date:'2026-06-14', timeJST:'11:00', timeVN:'09:00', home:'CIV', away:'ECU', venue:'エスタディオ BBVA (Monterrey)', stage:'グループステージ 第1節'},
-  {group:'グループF', date:'2026-06-14', timeJST:'13:00', timeVN:'11:00', home:'SWE', away:'TUN', venue:'BC プレイス (Vancouver)', stage:'グループステージ 第1節'},
+  {group:'グループE',date:'2026-06-14',timeJST:'02:00',timeVN:'00:00',home:'GER',away:'CUW',venue:'NRGスタジアム (Houston)',stage:'グループステージ 第1節'},
+  {group:'グループF',date:'2026-06-14',timeJST:'05:00',timeVN:'03:00',home:'NED',away:'JPN',venue:'AT&Tスタジアム (Arlington)',stage:'グループステージ 第1節'},
+  {group:'グループD',date:'2026-06-14',timeJST:'08:00',timeVN:'06:00',home:'AUS',away:'TUR',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'グループステージ 第1節'},
+  {group:'グループE',date:'2026-06-14',timeJST:'11:00',timeVN:'09:00',home:'CIV',away:'ECU',venue:'エスタディオ BBVA (Monterrey)',stage:'グループステージ 第1節'},
+  {group:'グループF',date:'2026-06-14',timeJST:'13:00',timeVN:'11:00',home:'SWE',away:'TUN',venue:'BCプレイス (Vancouver)',stage:'グループステージ 第1節'},
   // 6/15(月)
-  {group:'グループF', date:'2026-06-15', timeJST:'05:00', timeVN:'03:00', home:'JPN', away:'TUN', venue:'AT&T スタジアム (Arlington)', stage:'グループステージ 第1節'},
-  {group:'グループE', date:'2026-06-15', timeJST:'08:00', timeVN:'06:00', home:'NED', away:'SWE', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'グループステージ 第1節'},
+  {group:'グループF',date:'2026-06-15',timeJST:'05:00',timeVN:'03:00',home:'JPN',away:'TUN',venue:'AT&Tスタジアム (Arlington)',stage:'グループステージ 第1節'},
+  {group:'グループE',date:'2026-06-15',timeJST:'08:00',timeVN:'06:00',home:'NED',away:'SWE',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'グループステージ 第1節'},
   // 6/16(月)
-  {group:'グループH', date:'2026-06-16', timeJST:'01:00', timeVN:'23:00', home:'ESP', away:'CPV', venue:'メルセデス・ベンツ・スタジアム (Atlanta)', stage:'グループステージ 第1節'},
-  {group:'グループG', date:'2026-06-16', timeJST:'04:00', timeVN:'02:00', home:'BEL', away:'EGY', venue:'ルーメン・フィールド (Seattle)', stage:'グループステージ 第1節'},
-  {group:'グループH', date:'2026-06-16', timeJST:'07:00', timeVN:'05:00', home:'KSA', away:'URU', venue:'ハードロック・スタジアム (Miami)', stage:'グループステージ 第1節'},
-  {group:'グループG', date:'2026-06-16', timeJST:'10:00', timeVN:'08:00', home:'IRN', away:'NZL', venue:'SoFi スタジアム (Los Angeles)', stage:'グループステージ 第1節'},
+  {group:'グループH',date:'2026-06-16',timeJST:'01:00',timeVN:'23:00',home:'ESP',away:'CPV',venue:'メルセデス・ベンツ・スタジアム (Atlanta)',stage:'グループステージ 第1節'},
+  {group:'グループG',date:'2026-06-16',timeJST:'04:00',timeVN:'02:00',home:'BEL',away:'EGY',venue:'ルーメン・フィールド (Seattle)',stage:'グループステージ 第1節'},
+  {group:'グループH',date:'2026-06-16',timeJST:'07:00',timeVN:'05:00',home:'KSA',away:'URU',venue:'ハードロック・スタジアム (Miami)',stage:'グループステージ 第1節'},
+  {group:'グループG',date:'2026-06-16',timeJST:'10:00',timeVN:'08:00',home:'IRN',away:'NZL',venue:'SoFiスタジアム (Los Angeles)',stage:'グループステージ 第1節'},
   // 6/17(火)
-  {group:'グループI', date:'2026-06-17', timeJST:'04:00', timeVN:'02:00', home:'FRA', away:'SEN', venue:'メットライフ・スタジアム (New York)', stage:'グループステージ 第1節'},
-  {group:'グループJ', date:'2026-06-17', timeJST:'07:00', timeVN:'05:00', home:'IRQ', away:'NOR', venue:'ジレット・スタジアム (Foxborough)', stage:'グループステージ 第1節'},
-  {group:'グループI', date:'2026-06-17', timeJST:'10:00', timeVN:'08:00', home:'AUT', away:'JOR', venue:"Levi's スタジアム (San Francisco)", stage:'グループステージ 第1節'},
-  {group:'グループJ', date:'2026-06-17', timeJST:'13:00', timeVN:'11:00', home:'ARG', away:'ALG', venue:"Levi's スタジアム (San Francisco)", stage:'グループステージ 第1節'},
+  {group:'グループI',date:'2026-06-17',timeJST:'04:00',timeVN:'02:00',home:'FRA',away:'SEN',venue:'メットライフ・スタジアム (New York)',stage:'グループステージ 第1節'},
+  {group:'グループJ',date:'2026-06-17',timeJST:'07:00',timeVN:'05:00',home:'IRQ',away:'NOR',venue:'ジレット・スタジアム (Foxborough)',stage:'グループステージ 第1節'},
+  {group:'グループI',date:'2026-06-17',timeJST:'10:00',timeVN:'08:00',home:'AUT',away:'JOR',venue:"Levi's スタジアム (San Francisco)",stage:'グループステージ 第1節'},
+  {group:'グループJ',date:'2026-06-17',timeJST:'13:00',timeVN:'11:00',home:'ARG',away:'ALG',venue:"Levi's スタジアム (San Francisco)",stage:'グループステージ 第1節'},
   // 6/18(水)
-  {group:'グループK', date:'2026-06-18', timeJST:'02:00', timeVN:'00:00', home:'POR', away:'COD', venue:'NRG スタジアム (Houston)', stage:'グループステージ 第1節'},
-  {group:'グループL', date:'2026-06-18', timeJST:'05:00', timeVN:'03:00', home:'ENG', away:'CRO', venue:'AT&T スタジアム (Arlington)', stage:'グループステージ 第1節'},
-  {group:'グループL', date:'2026-06-18', timeJST:'08:00', timeVN:'06:00', home:'GHA', away:'PAN', venue:'BMO フィールド (Toronto)', stage:'グループステージ 第1節'},
-  {group:'グループK', date:'2026-06-18', timeJST:'11:00', timeVN:'09:00', home:'UZB', away:'COL', venue:'エスタディオ・アステカ (Mexico City)', stage:'グループステージ 第1節'},
+  {group:'グループK',date:'2026-06-18',timeJST:'02:00',timeVN:'00:00',home:'POR',away:'COD',venue:'NRGスタジアム (Houston)',stage:'グループステージ 第1節'},
+  {group:'グループL',date:'2026-06-18',timeJST:'05:00',timeVN:'03:00',home:'ENG',away:'CRO',venue:'AT&Tスタジアム (Arlington)',stage:'グループステージ 第1節'},
+  {group:'グループL',date:'2026-06-18',timeJST:'08:00',timeVN:'06:00',home:'GHA',away:'PAN',venue:'BMOフィールド (Toronto)',stage:'グループステージ 第1節'},
+  {group:'グループK',date:'2026-06-18',timeJST:'11:00',timeVN:'09:00',home:'UZB',away:'COL',venue:'エスタディオ・アステカ (Mexico City)',stage:'グループステージ 第1節'},
 
-  // ========== グループステージ 第2節 ==========
+  // ===== グループステージ 第2節 =====
   // 6/19(木)
-  {group:'グループA', date:'2026-06-19', timeJST:'01:00', timeVN:'23:00', home:'CZE', away:'RSA', venue:'メルセデス・ベンツ・スタジアム (Atlanta)', stage:'グループステージ 第2節'},
-  {group:'グループB', date:'2026-06-19', timeJST:'04:00', timeVN:'02:00', home:'SUI', away:'BIH', venue:'SoFi スタジアム (Los Angeles)', stage:'グループステージ 第2節'},
-  {group:'グループB', date:'2026-06-19', timeJST:'07:00', timeVN:'05:00', home:'CAN', away:'QAT', venue:'BC プレイス (Vancouver)', stage:'グループステージ 第2節'},
-  {group:'グループA', date:'2026-06-19', timeJST:'10:00', timeVN:'08:00', home:'MEX', away:'KOR', venue:'エスタディオ AKRON (Guadalajara)', stage:'グループステージ 第2節'},
+  {group:'グループA',date:'2026-06-19',timeJST:'01:00',timeVN:'23:00',home:'CZE',away:'RSA',venue:'メルセデス・ベンツ・スタジアム (Atlanta)',stage:'グループステージ 第2節'},
+  {group:'グループB',date:'2026-06-19',timeJST:'04:00',timeVN:'02:00',home:'SUI',away:'BIH',venue:'SoFiスタジアム (Los Angeles)',stage:'グループステージ 第2節'},
+  {group:'グループB',date:'2026-06-19',timeJST:'07:00',timeVN:'05:00',home:'CAN',away:'QAT',venue:'BCプレイス (Vancouver)',stage:'グループステージ 第2節'},
+  {group:'グループA',date:'2026-06-19',timeJST:'10:00',timeVN:'08:00',home:'MEX',away:'KOR',venue:'エスタディオ AKRON (Guadalajara)',stage:'グループステージ 第2節'},
   // 6/20(土)
-  {group:'グループF', date:'2026-06-20', timeJST:'02:00', timeVN:'00:00', home:'NED', away:'SWE', venue:'NRG スタジアム (Houston)', stage:'グループステージ 第2節'},
-  {group:'グループD', date:'2026-06-20', timeJST:'04:00', timeVN:'02:00', home:'USA', away:'AUS', venue:'ルーメン・フィールド (Seattle)', stage:'グループステージ 第2節'},
-  {group:'グループE', date:'2026-06-20', timeJST:'05:00', timeVN:'03:00', home:'GER', away:'CUW', venue:'アロウヘッド・スタジアム (Kansas City)', stage:'グループステージ 第2節'},
-  {group:'グループC', date:'2026-06-20', timeJST:'07:00', timeVN:'05:00', home:'SCO', away:'MAR', venue:'ジレット・スタジアム (Foxborough)', stage:'グループステージ 第2節'},
-  {group:'グループC', date:'2026-06-20', timeJST:'09:30', timeVN:'07:30', home:'BRA', away:'HAI', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'グループステージ 第2節'},
-  {group:'グループD', date:'2026-06-20', timeJST:'12:00', timeVN:'10:00', home:'TUR', away:'PAR', venue:"Levi's スタジアム (San Francisco)", stage:'グループステージ 第2節'},
+  {group:'グループF',date:'2026-06-20',timeJST:'02:00',timeVN:'00:00',home:'NED',away:'TUN',venue:'NRGスタジアム (Houston)',stage:'グループステージ 第2節'},
+  {group:'グループD',date:'2026-06-20',timeJST:'04:00',timeVN:'02:00',home:'USA',away:'AUS',venue:'ルーメン・フィールド (Seattle)',stage:'グループステージ 第2節'},
+  {group:'グループE',date:'2026-06-20',timeJST:'05:00',timeVN:'03:00',home:'GER',away:'CUW',venue:'アロウヘッド・スタジアム (Kansas City)',stage:'グループステージ 第2節'},
+  {group:'グループC',date:'2026-06-20',timeJST:'07:00',timeVN:'05:00',home:'SCO',away:'MAR',venue:'ジレット・スタジアム (Foxborough)',stage:'グループステージ 第2節'},
+  {group:'グループC',date:'2026-06-20',timeJST:'09:30',timeVN:'07:30',home:'BRA',away:'HAI',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'グループステージ 第2節'},
+  {group:'グループD',date:'2026-06-20',timeJST:'12:00',timeVN:'10:00',home:'TUR',away:'PAR',venue:"Levi's スタジアム (San Francisco)",stage:'グループステージ 第2節'},
   // 6/21(日)
-  {group:'グループF', date:'2026-06-21', timeJST:'02:00', timeVN:'00:00', home:'NED', away:'TUN', venue:'NRG スタジアム (Houston)', stage:'グループステージ 第2節'},
-  {group:'グループE', date:'2026-06-21', timeJST:'05:00', timeVN:'03:00', home:'ECU', away:'CUW', venue:'アロウヘッド・スタジアム (Kansas City)', stage:'グループステージ 第2節'},
-  {group:'グループG', date:'2026-06-21', timeJST:'09:00', timeVN:'07:00', home:'BEL', away:'NZL', venue:'エスタディオ BBVA (Monterrey)', stage:'グループステージ 第2節'},
-  {group:'グループF', date:'2026-06-21', timeJST:'13:00', timeVN:'11:00', home:'JPN', away:'SWE', venue:'エスタディオ BBVA (Monterrey)', stage:'グループステージ 第2節'},
+  {group:'グループF',date:'2026-06-21',timeJST:'02:00',timeVN:'00:00',home:'SWE',away:'TUN',venue:'NRGスタジアム (Houston)',stage:'グループステージ 第2節'},
+  {group:'グループE',date:'2026-06-21',timeJST:'05:00',timeVN:'03:00',home:'ECU',away:'CUW',venue:'アロウヘッド・スタジアム (Kansas City)',stage:'グループステージ 第2節'},
+  {group:'グループG',date:'2026-06-21',timeJST:'09:00',timeVN:'07:00',home:'BEL',away:'NZL',venue:'エスタディオ BBVA (Monterrey)',stage:'グループステージ 第2節'},
+  {group:'グループF',date:'2026-06-21',timeJST:'13:00',timeVN:'11:00',home:'JPN',away:'SWE',venue:'エスタディオ BBVA (Monterrey)',stage:'グループステージ 第2節'},
   // 6/22(月)
-  {group:'グループH', date:'2026-06-22', timeJST:'01:00', timeVN:'23:00', home:'ESP', away:'KSA', venue:'メルセデス・ベンツ・スタジアム (Atlanta)', stage:'グループステージ 第2節'},
-  {group:'グループG', date:'2026-06-22', timeJST:'04:00', timeVN:'02:00', home:'BEL', away:'IRN', venue:'SoFi スタジアム (Los Angeles)', stage:'グループステージ 第2節'},
-  {group:'グループH', date:'2026-06-22', timeJST:'07:00', timeVN:'05:00', home:'URU', away:'CPV', venue:'ハードロック・スタジアム (Miami)', stage:'グループステージ 第2節'},
-  {group:'グループG', date:'2026-06-22', timeJST:'10:00', timeVN:'08:00', home:'NZL', away:'EGY', venue:'BC プレイス (Vancouver)', stage:'グループステージ 第2節'},
+  {group:'グループH',date:'2026-06-22',timeJST:'01:00',timeVN:'23:00',home:'ESP',away:'KSA',venue:'メルセデス・ベンツ・スタジアム (Atlanta)',stage:'グループステージ 第2節'},
+  {group:'グループG',date:'2026-06-22',timeJST:'04:00',timeVN:'02:00',home:'BEL',away:'IRN',venue:'SoFiスタジアム (Los Angeles)',stage:'グループステージ 第2節'},
+  {group:'グループH',date:'2026-06-22',timeJST:'07:00',timeVN:'05:00',home:'URU',away:'CPV',venue:'ハードロック・スタジアム (Miami)',stage:'グループステージ 第2節'},
+  {group:'グループG',date:'2026-06-22',timeJST:'10:00',timeVN:'08:00',home:'NZL',away:'EGY',venue:'BCプレイス (Vancouver)',stage:'グループステージ 第2節'},
 
-  // ========== グループステージ 第3節 ==========
+  // ===== グループステージ 第3節 =====
   // 6/23(火)
-  {group:'グループJ', date:'2026-06-23', timeJST:'02:00', timeVN:'00:00', home:'ARG', away:'AUT', venue:'AT&T スタジアム (Arlington)', stage:'グループステージ 第3節'},
-  {group:'グループI', date:'2026-06-23', timeJST:'06:00', timeVN:'04:00', home:'FRA', away:'IRQ', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'グループステージ 第3節'},
-  {group:'グループI', date:'2026-06-23', timeJST:'09:00', timeVN:'07:00', home:'NOR', away:'SEN', venue:'メットライフ・スタジアム (New York)', stage:'グループステージ 第3節'},
-  {group:'グループJ', date:'2026-06-23', timeJST:'12:00', timeVN:'10:00', home:'JOR', away:'ALG', venue:"Levi's スタジアム (San Francisco)", stage:'グループステージ 第3節'},
+  {group:'グループJ',date:'2026-06-23',timeJST:'02:00',timeVN:'00:00',home:'ARG',away:'AUT',venue:'AT&Tスタジアム (Arlington)',stage:'グループステージ 第3節'},
+  {group:'グループI',date:'2026-06-23',timeJST:'06:00',timeVN:'04:00',home:'FRA',away:'IRQ',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'グループステージ 第3節'},
+  {group:'グループI',date:'2026-06-23',timeJST:'09:00',timeVN:'07:00',home:'NOR',away:'SEN',venue:'メットライフ・スタジアム (New York)',stage:'グループステージ 第3節'},
+  {group:'グループJ',date:'2026-06-23',timeJST:'12:00',timeVN:'10:00',home:'JOR',away:'ALG',venue:"Levi's スタジアム (San Francisco)",stage:'グループステージ 第3節'},
   // 6/24(水)
-  {group:'グループK', date:'2026-06-24', timeJST:'02:00', timeVN:'00:00', home:'POR', away:'UZB', venue:'NRG スタジアム (Houston)', stage:'グループステージ 第3節'},
-  {group:'グループL', date:'2026-06-24', timeJST:'05:00', timeVN:'03:00', home:'ENG', away:'GHA', venue:'ジレット・スタジアム (Foxborough)', stage:'グループステージ 第3節'},
-  {group:'グループK', date:'2026-06-24', timeJST:'11:00', timeVN:'09:00', home:'COL', away:'COD', venue:'エスタディオ AKRON (Guadalajara)', stage:'グループステージ 第3節'},
-  {group:'グループL', date:'2026-06-24', timeJST:'08:00', timeVN:'06:00', home:'PAN', away:'CRO', venue:'BMO フィールド (Toronto)', stage:'グループステージ 第3節'},
+  {group:'グループK',date:'2026-06-24',timeJST:'02:00',timeVN:'00:00',home:'POR',away:'UZB',venue:'NRGスタジアム (Houston)',stage:'グループステージ 第3節'},
+  {group:'グループL',date:'2026-06-24',timeJST:'05:00',timeVN:'03:00',home:'ENG',away:'GHA',venue:'ジレット・スタジアム (Foxborough)',stage:'グループステージ 第3節'},
+  {group:'グループL',date:'2026-06-24',timeJST:'08:00',timeVN:'06:00',home:'PAN',away:'CRO',venue:'BMOフィールド (Toronto)',stage:'グループステージ 第3節'},
+  {group:'グループK',date:'2026-06-24',timeJST:'11:00',timeVN:'09:00',home:'COL',away:'COD',venue:'エスタディオ AKRON (Guadalajara)',stage:'グループステージ 第3節'},
   // 6/25(木)
-  {group:'グループB', date:'2026-06-25', timeJST:'04:00', timeVN:'02:00', home:'SUI', away:'CAN', venue:'BC プレイス (Vancouver)', stage:'グループステージ 第3節'},
-  {group:'グループA', date:'2026-06-25', timeJST:'04:00', timeVN:'02:00', home:'BIH', away:'QAT', venue:'ルーメン・フィールド (Seattle)', stage:'グループステージ 第3節'},
-  {group:'グループB', date:'2026-06-25', timeJST:'07:00', timeVN:'05:00', home:'MAR', away:'HAI', venue:'メルセデス・ベンツ・スタジアム (Atlanta)', stage:'グループステージ 第3節'},
-  {group:'グループC', date:'2026-06-25', timeJST:'07:00', timeVN:'05:00', home:'SCO', away:'BRA', venue:'ハードロック・スタジアム (Miami)', stage:'グループステージ 第3節'},
-  {group:'グループC', date:'2026-06-25', timeJST:'10:00', timeVN:'08:00', home:'CZE', away:'MEX', venue:'エスタディオ・アステカ (Mexico City)', stage:'グループステージ 第3節'},
-  {group:'グループA', date:'2026-06-25', timeJST:'10:00', timeVN:'08:00', home:'RSA', away:'KOR', venue:'エスタディオ BBVA (Monterrey)', stage:'グループステージ 第3節'},
+  {group:'グループB',date:'2026-06-25',timeJST:'04:00',timeVN:'02:00',home:'SUI',away:'CAN',venue:'BCプレイス (Vancouver)',stage:'グループステージ 第3節'},
+  {group:'グループA',date:'2026-06-25',timeJST:'04:00',timeVN:'02:00',home:'BIH',away:'QAT',venue:'ルーメン・フィールド (Seattle)',stage:'グループステージ 第3節'},
+  {group:'グループC',date:'2026-06-25',timeJST:'07:00',timeVN:'05:00',home:'MAR',away:'HAI',venue:'メルセデス・ベンツ・スタジアム (Atlanta)',stage:'グループステージ 第3節'},
+  {group:'グループC',date:'2026-06-25',timeJST:'07:00',timeVN:'05:00',home:'SCO',away:'BRA',venue:'ハードロック・スタジアム (Miami)',stage:'グループステージ 第3節'},
+  {group:'グループA',date:'2026-06-25',timeJST:'10:00',timeVN:'08:00',home:'RSA',away:'KOR',venue:'エスタディオ BBVA (Monterrey)',stage:'グループステージ 第3節'},
+  {group:'グループA',date:'2026-06-25',timeJST:'10:00',timeVN:'08:00',home:'CZE',away:'MEX',venue:'エスタディオ・アステカ (Mexico City)',stage:'グループステージ 第3節'},
   // 6/26(金)
-  {group:'グループE', date:'2026-06-26', timeJST:'05:00', timeVN:'03:00', home:'CUW', away:'COL', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'グループステージ 第3節'},
-  {group:'グループF', date:'2026-06-26', timeJST:'05:00', timeVN:'03:00', home:'ECU', away:'GER', venue:'メットライフ・スタジアム (New York)', stage:'グループステージ 第3節'},
-  {group:'グループD', date:'2026-06-26', timeJST:'08:00', timeVN:'06:00', home:'TUN', away:'NED', venue:'アロウヘッド・スタジアム (Kansas City)', stage:'グループステージ 第3節'},
-  {group:'グループE', date:'2026-06-26', timeJST:'08:00', timeVN:'06:00', home:'JPN', away:'SWE', venue:'AT&T スタジアム (Arlington)', stage:'グループステージ 第3節'},
-  {group:'グループD', date:'2026-06-26', timeJST:'11:00', timeVN:'09:00', home:'TUR', away:'USA', venue:'SoFi スタジアム (Los Angeles)', stage:'グループステージ 第3節'},
-  {group:'グループF', date:'2026-06-26', timeJST:'11:00', timeVN:'09:00', home:'PAR', away:'AUS', venue:"Levi's スタジアム (San Francisco)", stage:'グループステージ 第3節'},
+  {group:'グループE',date:'2026-06-26',timeJST:'05:00',timeVN:'03:00',home:'CUW',away:'CIV',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'グループステージ 第3節'},
+  {group:'グループF',date:'2026-06-26',timeJST:'05:00',timeVN:'03:00',home:'TUN',away:'NED',venue:'メットライフ・スタジアム (New York)',stage:'グループステージ 第3節'},
+  {group:'グループE',date:'2026-06-26',timeJST:'08:00',timeVN:'06:00',home:'ECU',away:'GER',venue:'アロウヘッド・スタジアム (Kansas City)',stage:'グループステージ 第3節'},
+  {group:'グループF',date:'2026-06-26',timeJST:'08:00',timeVN:'06:00',home:'JPN',away:'SWE',venue:'AT&Tスタジアム (Arlington)',stage:'グループステージ 第3節'},
+  {group:'グループD',date:'2026-06-26',timeJST:'11:00',timeVN:'09:00',home:'TUR',away:'USA',venue:'SoFiスタジアム (Los Angeles)',stage:'グループステージ 第3節'},
+  {group:'グループD',date:'2026-06-26',timeJST:'11:00',timeVN:'09:00',home:'PAR',away:'AUS',venue:"Levi's スタジアム (San Francisco)",stage:'グループステージ 第3節'},
   // 6/27(土)
-  {group:'グループF', date:'2026-06-27', timeJST:'04:00', timeVN:'02:00', home:'NOR', away:'FRA', venue:'ジレット・スタジアム (Foxborough)', stage:'グループステージ 第3節'},
-  {group:'グループI', date:'2026-06-27', timeJST:'04:00', timeVN:'02:00', home:'SEN', away:'IRQ', venue:'BMO フィールド (Toronto)', stage:'グループステージ 第3節'},
-  {group:'グループH', date:'2026-06-27', timeJST:'09:00', timeVN:'07:00', home:'CPV', away:'KSA', venue:'NRG スタジアム (Houston)', stage:'グループステージ 第3節'},
-  {group:'グループH', date:'2026-06-27', timeJST:'09:00', timeVN:'07:00', home:'URU', away:'ESP', venue:'BC プレイス (Vancouver)', stage:'グループステージ 第3節'},
-  {group:'グループG', date:'2026-06-27', timeJST:'12:00', timeVN:'10:00', home:'NZL', away:'BEL', venue:'BC プレイス (Vancouver)', stage:'グループステージ 第3節'},
-  {group:'グループG', date:'2026-06-27', timeJST:'12:00', timeVN:'10:00', home:'EGY', away:'IRN', venue:'ルーメン・フィールド (Seattle)', stage:'グループステージ 第3節'},
+  {group:'グループI',date:'2026-06-27',timeJST:'04:00',timeVN:'02:00',home:'NOR',away:'FRA',venue:'ジレット・スタジアム (Foxborough)',stage:'グループステージ 第3節'},
+  {group:'グループI',date:'2026-06-27',timeJST:'04:00',timeVN:'02:00',home:'SEN',away:'IRQ',venue:'BMOフィールド (Toronto)',stage:'グループステージ 第3節'},
+  {group:'グループH',date:'2026-06-27',timeJST:'09:00',timeVN:'07:00',home:'CPV',away:'KSA',venue:'NRGスタジアム (Houston)',stage:'グループステージ 第3節'},
+  {group:'グループH',date:'2026-06-27',timeJST:'09:00',timeVN:'07:00',home:'URU',away:'ESP',venue:'BCプレイス (Vancouver)',stage:'グループステージ 第3節'},
+  {group:'グループG',date:'2026-06-27',timeJST:'12:00',timeVN:'10:00',home:'NZL',away:'BEL',venue:'BCプレイス (Vancouver)',stage:'グループステージ 第3節'},
+  {group:'グループG',date:'2026-06-27',timeJST:'12:00',timeVN:'10:00',home:'EGY',away:'IRN',venue:'ルーメン・フィールド (Seattle)',stage:'グループステージ 第3節'},
   // 6/28(日)
-  {group:'グループI', date:'2026-06-28', timeJST:'06:00', timeVN:'04:00', home:'ENG', away:'PAN', venue:'メットライフ・スタジアム (New York)', stage:'グループステージ 第3節'},
-  {group:'グループJ', date:'2026-06-28', timeJST:'06:00', timeVN:'04:00', home:'CRO', away:'GHA', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'グループステージ 第3節'},
-  {group:'グループK', date:'2026-06-28', timeJST:'08:30', timeVN:'06:30', home:'COL', away:'POR', venue:'ハードロック・スタジアム (Miami)', stage:'グループステージ 第3節'},
-  {group:'グループL', date:'2026-06-28', timeJST:'08:30', timeVN:'06:30', home:'UZB', away:'COD', venue:'メルセデス・ベンツ・スタジアム (Atlanta)', stage:'グループステージ 第3節'},
-  {group:'グループJ', date:'2026-06-28', timeJST:'11:00', timeVN:'09:00', home:'ALG', away:'AUT', venue:'アロウヘッド・スタジアム (Kansas City)', stage:'グループステージ 第3節'},
-  {group:'グループJ', date:'2026-06-28', timeJST:'11:00', timeVN:'09:00', home:'JOR', away:'ARG', venue:'AT&T スタジアム (Arlington)', stage:'グループステージ 第3節'},
-  // 6/29(月)
-  {group:'ラウンド32', date:'2026-06-29', timeJST:'04:00', timeVN:'02:00', home:'A2位', away:'B2位', venue:'SoFi スタジアム (Los Angeles)', stage:'Round 32'},
+  {group:'グループL',date:'2026-06-28',timeJST:'06:00',timeVN:'04:00',home:'ENG',away:'PAN',venue:'メットライフ・スタジアム (New York)',stage:'グループステージ 第3節'},
+  {group:'グループL',date:'2026-06-28',timeJST:'06:00',timeVN:'04:00',home:'CRO',away:'GHA',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'グループステージ 第3節'},
+  {group:'グループK',date:'2026-06-28',timeJST:'08:30',timeVN:'06:30',home:'COL',away:'POR',venue:'ハードロック・スタジアム (Miami)',stage:'グループステージ 第3節'},
+  {group:'グループK',date:'2026-06-28',timeJST:'08:30',timeVN:'06:30',home:'UZB',away:'COD',venue:'メルセデス・ベンツ・スタジアム (Atlanta)',stage:'グループステージ 第3節'},
+  {group:'グループJ',date:'2026-06-28',timeJST:'11:00',timeVN:'09:00',home:'ALG',away:'AUT',venue:'アロウヘッド・スタジアム (Kansas City)',stage:'グループステージ 第3節'},
+  {group:'グループJ',date:'2026-06-28',timeJST:'11:00',timeVN:'09:00',home:'JOR',away:'ARG',venue:'AT&Tスタジアム (Arlington)',stage:'グループステージ 第3節'},
 
-  // ========== Round 32（ラウンド32）==========
+  // ===== Round 32 =====
   // 6/29(月)
-  {group:'ラウンド32', date:'2026-06-29', timeJST:'04:00', timeVN:'02:00', home:'A2位', away:'B2位', venue:'SoFi スタジアム (Los Angeles)', stage:'Round 32', ro:'R32'},
+  {group:'ラウンド32',date:'2026-06-29',timeJST:'04:00',timeVN:'02:00',home:'A2位',away:'B2位',venue:'SoFiスタジアム (Los Angeles)',stage:'ラウンド32',ro:'R32'},
   // 6/30(火)
-  {group:'ラウンド32', date:'2026-06-30', timeJST:'02:00', timeVN:'00:00', home:'C1位', away:'F2位', venue:'NRG スタジアム (Houston)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-06-30', timeJST:'05:30', timeVN:'03:30', home:'E1位', away:'3位(BCDF)', venue:'ジレット・スタジアム (Foxborough)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-06-30', timeJST:'10:00', timeVN:'08:00', home:'F1位', away:'C2位', venue:'エスタディオ BBVA (Monterrey)', stage:'Round 32', ro:'R32'},
+  {group:'ラウンド32',date:'2026-06-30',timeJST:'02:00',timeVN:'00:00',home:'C1位',away:'F2位',venue:'NRGスタジアム (Houston)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-06-30',timeJST:'05:30',timeVN:'03:30',home:'E1位',away:'3位(BCDF)',venue:'ジレット・スタジアム (Foxborough)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-06-30',timeJST:'10:00',timeVN:'08:00',home:'F1位',away:'C2位',venue:'エスタディオ BBVA (Monterrey)',stage:'ラウンド32',ro:'R32'},
   // 7/1(水)
-  {group:'ラウンド32', date:'2026-07-01', timeJST:'02:00', timeVN:'00:00', home:'E2位', away:'I2位', venue:'AT&T スタジアム (Arlington)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-01', timeJST:'06:00', timeVN:'04:00', home:'I1位', away:'3位(CDGH)', venue:'メットライフ・スタジアム (New York)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-01', timeJST:'10:00', timeVN:'08:00', home:'A1位', away:'3位(CDEF)', venue:'エスタディオ・アステカ (Mexico City)', stage:'Round 32', ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-01',timeJST:'02:00',timeVN:'00:00',home:'E2位',away:'I2位',venue:'AT&Tスタジアム (Arlington)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-01',timeJST:'06:00',timeVN:'04:00',home:'I1位',away:'3位(CDGH)',venue:'メットライフ・スタジアム (New York)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-01',timeJST:'10:00',timeVN:'08:00',home:'A1位',away:'3位(CDEF)',venue:'エスタディオ・アステカ (Mexico City)',stage:'ラウンド32',ro:'R32'},
   // 7/2(木)
-  {group:'ラウンド32', date:'2026-07-02', timeJST:'01:00', timeVN:'23:00', home:'L1位', away:'3位(EHIJ)', venue:'BC プレイス (Vancouver)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-02', timeJST:'05:00', timeVN:'03:00', home:'G1位', away:'3位(AKLM)', venue:'ルーメン・フィールド (Seattle)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-02', timeJST:'09:00', timeVN:'07:00', home:'D1位', away:'3位(BIJL)', venue:'リーバイス・スタジアム (San Francisco)', stage:'Round 32', ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-02',timeJST:'01:00',timeVN:'23:00',home:'L1位',away:'3位(EHIJ)',venue:'BCプレイス (Vancouver)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-02',timeJST:'05:00',timeVN:'03:00',home:'G1位',away:'3位(AKLM)',venue:'ルーメン・フィールド (Seattle)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-02',timeJST:'09:00',timeVN:'07:00',home:'D1位',away:'3位(BIJL)',venue:"Levi's スタジアム (San Francisco)",stage:'ラウンド32',ro:'R32'},
   // 7/3(金)
-  {group:'ラウンド32', date:'2026-07-03', timeJST:'03:00', timeVN:'01:00', home:'H1位', away:'J2位', venue:'SoFi スタジアム (Los Angeles)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-03', timeJST:'08:00', timeVN:'06:00', home:'K2位', away:'L2位', venue:'BMO フィールド (Toronto)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-03', timeJST:'12:00', timeVN:'10:00', home:'B1位', away:'3位(FGJK)', venue:'BC プレイス (Vancouver)', stage:'Round 32', ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-03',timeJST:'03:00',timeVN:'01:00',home:'H1位',away:'J2位',venue:'SoFiスタジアム (Los Angeles)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-03',timeJST:'08:00',timeVN:'06:00',home:'K2位',away:'L2位',venue:'BMOフィールド (Toronto)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-03',timeJST:'12:00',timeVN:'10:00',home:'B1位',away:'3位(FGJK)',venue:'BCプレイス (Vancouver)',stage:'ラウンド32',ro:'R32'},
   // 7/4(土)
-  {group:'ラウンド32', date:'2026-07-04', timeJST:'03:00', timeVN:'01:00', home:'D2位', away:'G2位', venue:'AT&T スタジアム (Arlington)', stage:'Round 32', ro:'R32'},
-  {group:'ラウンド32', date:'2026-07-04', timeJST:'10:30', timeVN:'08:30', home:'K1位', away:'3位(ADEJ)', venue:'アロウヘッド・スタジアム (Kansas City)', stage:'Round 32', ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-04',timeJST:'03:00',timeVN:'01:00',home:'D2位',away:'G2位',venue:'AT&Tスタジアム (Arlington)',stage:'ラウンド32',ro:'R32'},
+  {group:'ラウンド32',date:'2026-07-04',timeJST:'10:30',timeVN:'08:30',home:'K1位',away:'3位(ADEJ)',venue:'アロウヘッド・スタジアム (Kansas City)',stage:'ラウンド32',ro:'R32'},
 
-  // ========== Round 16（ラウンド16）==========
+  // ===== Round 16 =====
   // 7/5(日)
-  {group:'ラウンド16', date:'2026-07-05', timeJST:'02:00', timeVN:'00:00', home:'R32③勝者', away:'R32④勝者', venue:'NRG スタジアム (Houston)', stage:'Round 16', ro:'R16'},
-  {group:'ラウンド16', date:'2026-07-05', timeJST:'07:00', timeVN:'05:00', home:'R32①勝者', away:'R32②勝者', venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)', stage:'Round 16', ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-05',timeJST:'02:00',timeVN:'00:00',home:'R32③勝者',away:'R32④勝者',venue:'NRGスタジアム (Houston)',stage:'ラウンド16',ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-05',timeJST:'07:00',timeVN:'05:00',home:'R32①勝者',away:'R32②勝者',venue:'リンカーン・ファイナンシャル・フィールド (Philadelphia)',stage:'ラウンド16',ro:'R16'},
   // 7/6(月)
-  {group:'ラウンド16', date:'2026-07-06', timeJST:'05:00', timeVN:'03:00', home:'R32⑨勝者', away:'R32⑩勝者', venue:'メットライフ・スタジアム (New York)', stage:'Round 16', ro:'R16'},
-  {group:'ラウンド16', date:'2026-07-06', timeJST:'09:00', timeVN:'07:00', home:'R32⑪勝者', away:'R32⑫勝者', venue:'エスタディオ・アステカ (Mexico City)', stage:'Round 16', ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-06',timeJST:'05:00',timeVN:'03:00',home:'R32⑨勝者',away:'R32⑩勝者',venue:'メットライフ・スタジアム (New York)',stage:'ラウンド16',ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-06',timeJST:'09:00',timeVN:'07:00',home:'R32⑪勝者',away:'R32⑫勝者',venue:'エスタディオ・アステカ (Mexico City)',stage:'ラウンド16',ro:'R16'},
   // 7/7(火)
-  {group:'ラウンド16', date:'2026-07-07', timeJST:'04:00', timeVN:'02:00', home:'R32⑤勝者', away:'R32⑥勝者', venue:'AT&T スタジアム (Arlington)', stage:'Round 16', ro:'R16'},
-  {group:'ラウンド16', date:'2026-07-07', timeJST:'09:00', timeVN:'07:00', home:'R32⑦勝者', away:'R32⑧勝者', venue:'ルーメン・フィールド (Seattle)', stage:'Round 16', ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-07',timeJST:'04:00',timeVN:'02:00',home:'R32⑤勝者',away:'R32⑥勝者',venue:'AT&Tスタジアム (Arlington)',stage:'ラウンド16',ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-07',timeJST:'09:00',timeVN:'07:00',home:'R32⑦勝者',away:'R32⑧勝者',venue:'ルーメン・フィールド (Seattle)',stage:'ラウンド16',ro:'R16'},
   // 7/8(水)
-  {group:'ラウンド16', date:'2026-07-08', timeJST:'01:00', timeVN:'23:00', home:'R32⑬勝者', away:'R32⑭勝者', venue:'ハードロック・スタジアム (Miami)', stage:'Round 16', ro:'R16'},
-  {group:'ラウンド16', date:'2026-07-08', timeJST:'05:00', timeVN:'03:00', home:'R32⑮勝者', away:'R32⑯勝者', venue:'BC プレイス (Vancouver)', stage:'Round 16', ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-08',timeJST:'01:00',timeVN:'23:00',home:'R32⑬勝者',away:'R32⑭勝者',venue:'ハードロック・スタジアム (Miami)',stage:'ラウンド16',ro:'R16'},
+  {group:'ラウンド16',date:'2026-07-08',timeJST:'05:00',timeVN:'03:00',home:'R32⑮勝者',away:'R32⑯勝者',venue:'BCプレイス (Vancouver)',stage:'ラウンド16',ro:'R16'},
 
-  // ========== 準々決勝 ==========
+  // ===== 準々決勝 =====
   // 7/10(金)
-  {group:'準々決勝', date:'2026-07-10', timeJST:'05:00', timeVN:'03:00', home:'R16-S勝者', away:'R16-T勝者', venue:'ジレット・スタジアム (Foxborough)', stage:'準々決勝', ro:'QF'},
+  {group:'準々決勝',date:'2026-07-10',timeJST:'05:00',timeVN:'03:00',home:'R16-S勝者',away:'R16-T勝者',venue:'ジレット・スタジアム (Foxborough)',stage:'準々決勝',ro:'QF'},
   // 7/11(土)
-  {group:'準々決勝', date:'2026-07-11', timeJST:'04:00', timeVN:'02:00', home:'R16-U勝者', away:'R16-V勝者', venue:'SoFi スタジアム (Los Angeles)', stage:'準々決勝', ro:'QF'},
+  {group:'準々決勝',date:'2026-07-11',timeJST:'04:00',timeVN:'02:00',home:'R16-U勝者',away:'R16-V勝者',venue:'SoFiスタジアム (Los Angeles)',stage:'準々決勝',ro:'QF'},
   // 7/12(日)
-  {group:'準々決勝', date:'2026-07-12', timeJST:'06:00', timeVN:'04:00', home:'R16-W勝者', away:'R16-X勝者', venue:'ハードロック・スタジアム (Miami)', stage:'準々決勝', ro:'QF'},
-  {group:'準々決勝', date:'2026-07-12', timeJST:'10:00', timeVN:'08:00', home:'R16-Y勝者', away:'R16-Z勝者', venue:'アロウヘッド・スタジアム (Kansas City)', stage:'準々決勝', ro:'QF'},
+  {group:'準々決勝',date:'2026-07-12',timeJST:'06:00',timeVN:'04:00',home:'R16-W勝者',away:'R16-X勝者',venue:'ハードロック・スタジアム (Miami)',stage:'準々決勝',ro:'QF'},
+  {group:'準々決勝',date:'2026-07-12',timeJST:'10:00',timeVN:'08:00',home:'R16-Y勝者',away:'R16-Z勝者',venue:'アロウヘッド・スタジアム (Kansas City)',stage:'準々決勝',ro:'QF'},
 
-  // ========== 準決勝 ==========
+  // ===== 準決勝 =====
   // 7/15(火)
-  {group:'準決勝', date:'2026-07-15', timeJST:'04:00', timeVN:'02:00', home:'QFα勝者', away:'QFβ勝者', venue:'AT&T スタジアム (Arlington)', stage:'準決勝', ro:'SF'},
+  {group:'準決勝',date:'2026-07-15',timeJST:'04:00',timeVN:'02:00',home:'QF-α勝者',away:'QF-β勝者',venue:'AT&Tスタジアム (Arlington)',stage:'準決勝',ro:'SF'},
   // 7/16(水)
-  {group:'準決勝', date:'2026-07-16', timeJST:'04:00', timeVN:'02:00', home:'QFγ勝者', away:'QFδ勝者', venue:'メルセデス・ベンツ・スタジアム (Atlanta)', stage:'準決勝', ro:'SF'},
+  {group:'準決勝',date:'2026-07-16',timeJST:'04:00',timeVN:'02:00',home:'QF-γ勝者',away:'QF-δ勝者',venue:'メルセデス・ベンツ・スタジアム (Atlanta)',stage:'準決勝',ro:'SF'},
 
-  // ========== 3位決定戦・決勝 ==========
+  // ===== 3位決定戦 =====
   // 7/19(土)
-  {group:'3位決定戦', date:'2026-07-19', timeJST:'06:00', timeVN:'04:00', home:'SF敗者1', away:'SF敗者2', venue:'ハードロック・スタジアム (Miami)', stage:'3位決定戦', ro:'3RD'},
-  // 7/20(日) 決勝
-  {group:'🏆 決勝', date:'2026-07-20', timeJST:'04:00', timeVN:'02:00', home:'SF勝者1', away:'SF勝者2', venue:'メットライフ・スタジアム (New York)', stage:'🏆 決勝', ro:'FINAL'},
+  {group:'3位決定戦',date:'2026-07-19',timeJST:'06:00',timeVN:'04:00',home:'SF敗者1',away:'SF敗者2',venue:'ハードロック・スタジアム (Miami)',stage:'3位決定戦',ro:'3RD'},
+
+  // ===== 🏆 決勝 =====
+  // 7/20(日)
+  {group:'🏆 決勝',date:'2026-07-20',timeJST:'04:00',timeVN:'02:00',home:'SF勝者1',away:'SF勝者2',venue:'メットライフ・スタジアム (New York)',stage:'🏆 決勝',ro:'FINAL'},
 ]
 
 
@@ -1175,9 +1175,8 @@ function SquadModal({ teamId, onClose }) {
 }
 
 // ── Schedule Page ─────────────────────────────────────────
-function SchedulePage() {
+function SchedulePage({ onShowSquad }) {
   const [groupFilter,setGroupFilter]=useState('全て')
-  const [squadTeam,setSquadTeam]=useState(null)
   const stageGroups=['全て','グループステージ','ラウンド32','ラウンド16','準々決勝','準決勝','3位決定戦','🏆 決勝']
   const allGroups=stageGroups
   const filtered=groupFilter==='全て'?SCHEDULE:
@@ -1190,7 +1189,6 @@ function SchedulePage() {
 
   return(
     <div className="page fade-up">
-      {squadTeam&&<SquadModal teamId={squadTeam} onClose={()=>setSquadTeam(null)}/>}
       <div className="section-title">📅 試合スケジュール</div>
       <div style={{background:'rgba(0,212,255,0.06)',border:'1px solid rgba(0,212,255,0.2)',borderRadius:12,padding:'12px 16px',marginBottom:16,fontSize:12,color:'var(--text2)',lineHeight:1.8}}>
         🇯🇵 <strong style={{color:'var(--gold)'}}>日本時間 (JST)</strong> と 🇻🇳 <strong style={{color:'var(--green)'}}>ベトナム時間 (ICT)</strong> を併記<br/>
@@ -1214,7 +1212,7 @@ function SchedulePage() {
                     {isJPN&&<span style={{fontSize:10,color:'var(--blue)',fontWeight:700,border:'1px solid rgba(0,212,255,0.3)',padding:'1px 7px',borderRadius:8}}>🇯🇵 JAPAN</span>}
                   </div>
                   <div style={{display:'flex',alignItems:'center',gap:8}}>
-                    <div onClick={()=>ht&&setSquadTeam(ht.id)} style={{flex:1,textAlign:'right',cursor:ht?'pointer':'default'}}>
+                    <div onClick={()=>ht&&onShowSquad&&onShowSquad(ht.id)} style={{flex:1,textAlign:'right',cursor:ht?'pointer':'default'}}>
                       <div style={{fontSize:ht?28:16,lineHeight:1,marginBottom:3}}>{ht?.flag||'🏳'}</div>
                       <div style={{fontSize:12,fontWeight:700,color:ht?.id==='JPN'?'var(--blue)':'#fff'}}>{ht?.name||m.home}</div>
                     </div>
@@ -1224,7 +1222,7 @@ function SchedulePage() {
                         <div style={{fontSize:12,color:'var(--green)',marginTop:2}}>🇻🇳 {m.timeVN}</div>
                       </div>
                     </div>
-                    <div onClick={()=>at&&setSquadTeam(at.id)} style={{flex:1,textAlign:'left',cursor:at?'pointer':'default'}}>
+                    <div onClick={()=>at&&onShowSquad&&onShowSquad(at.id)} style={{flex:1,textAlign:'left',cursor:at?'pointer':'default'}}>
                       <div style={{fontSize:at?28:16,lineHeight:1,marginBottom:3}}>{at?.flag||'🏳'}</div>
                       <div style={{fontSize:12,fontWeight:700,color:at?.id==='JPN'?'var(--blue)':'#fff'}}>{at?.name||m.away}</div>
                     </div>
@@ -1413,7 +1411,7 @@ function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
 }
 
 // ── Page: REGISTER ────────────────────────────────────────
-function RegisterPage({ state, setState }) {
+function RegisterPage({ state, setState, onShowSquad }) {
   const [name,setName]=useState('')
   const [pass,setPass]=useState('')
   const [passConfirm,setPassConfirm]=useState('')
@@ -1425,7 +1423,6 @@ function RegisterPage({ state, setState }) {
   const [showEx,setShowEx]=useState(false)
   const [editMode,setEditMode]=useState(false)
   const [saving,setSaving]=useState(false)
-  const [squadTeam,setSquadTeam]=useState(null)
 
   const simpleHash = s => s.split('').reduce((a,c)=>Math.imul(31,a)+c.charCodeAt(0)|0,0).toString()
 
@@ -1581,7 +1578,6 @@ function RegisterPage({ state, setState }) {
 
   return(
     <div className="page fade-up">
-      {squadTeam&&<SquadModal teamId={squadTeam} onClose={()=>setSquadTeam(null)}/>}
       <div className="section-title">⚽ {participant?.name} さんの投票</div>
       <div className="card glow-gold" style={{marginBottom:14}}>
         <div style={{display:'flex',justifyContent:'space-between',flexWrap:'wrap',gap:12}}>
@@ -1620,7 +1616,7 @@ function RegisterPage({ state, setState }) {
           const bet=bets.find(b=>b.teamId===team.id); const sel=!!bet; const isJPN=team.id==='JPN'
           return(
             <div key={team.id} className={`team-card${sel?' selected':''}${isJPN?' jpn':''}`} onClick={()=>toggleTeam(team.id)}>
-              <span className="team-flag" onClick={e=>{e.stopPropagation();setSquadTeam(team.id)}} title="タップで選手一覧" style={{cursor:'zoom-in',display:'block'}}>{team.flag}</span>
+              <span className="team-flag" onClick={e=>{e.stopPropagation();onShowSquad&&onShowSquad(team.id)}} title="タップで選手一覧" style={{cursor:'zoom-in',display:'block'}}>{team.flag}</span>
               <div className="team-hint">👆 選手</div>
               <div className="team-name">{team.name}</div>
               {sel&&<div className="team-lots">{bet.lots}口</div>}
@@ -2018,6 +2014,7 @@ export default function App() {
   const [loading,setLoading]=useState(true)
   const [syncing,setSyncing]=useState(false)
   const [lastSync,setLastSync]=useState(null)
+  const [globalSquadTeam,setGlobalSquadTeam]=useState(null)
   const stateRef=useRef(state)
   const unsubRef=useRef(null)
 
@@ -2070,12 +2067,13 @@ export default function App() {
       </div>
 
       {page==='top'      &&<TopPage      state={state} setPage={setPage} syncing={syncing} lastSync={lastSync} onRefresh={onRefresh}/>}
-      {page==='register' &&<RegisterPage state={state} setState={setState}/>}
+      {page==='register' &&<RegisterPage state={state} setState={setState} onShowSquad={setGlobalSquadTeam}/>}
       {page==='status'   &&<StatusPage   state={state}/>}
       {page==='odds'     &&<OddsPage     state={state}/>}
-      {page==='schedule' &&<SchedulePage/>}
+      {page==='schedule' &&<SchedulePage onShowSquad={setGlobalSquadTeam}/>}
       {page==='result'   &&<ResultPage   state={state}/>}
       {page==='admin'    &&<AdminPage    state={state} setState={setState}/>}
+      {globalSquadTeam&&<SquadModal teamId={globalSquadTeam} onClose={()=>setGlobalSquadTeam(null)}/>}
       <AudioPlayer/>
     </>
   )
