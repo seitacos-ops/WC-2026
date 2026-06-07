@@ -359,6 +359,411 @@ const TEAMS = [
   { id:'PAN', name:'パナマ',               en:'Panama',         flag:'🇵🇦', region:'グループL' },
 ]
 
+
+// ── Squad Data ───────────────────────────────────────────
+const SQUADS = {
+  MEX: [
+    {pos:'GK',name:'ギジェルモ・オチョア',club:'AELリマソル'},{pos:'GK',name:'アレックス・パディージャ',club:'アスレティック・ビルバオ'},{pos:'GK',name:'ラウール・ランヘル',club:'グアダラハラ'},
+    {pos:'DF',name:'ヘスス・ガジャルド',club:'トルーカ'},{pos:'DF',name:'セサル・モンテス',club:'ロコモティフ'},{pos:'DF',name:'ホルヘ・サンチェス',club:'PAOK'},{pos:'DF',name:'ジュリアン・アラウホ',club:'セルティック'},{pos:'DF',name:'ヨハン・バスケス',club:'ジェノア'},
+    {pos:'MF',name:'エドソン・アルバレス',club:'フェネルバフチェ'},{pos:'MF',name:'オルベリン・ピネダ',club:'AEKアテネ'},{pos:'MF',name:'ルイス・チャベス',club:'ディナモ'},{pos:'MF',name:'オベド・バルガス',club:'アトレティコ・マドリード'},{pos:'MF',name:'アルバロ・フィダルゴ',club:'レアル・ベティス'},
+    {pos:'FW',name:'ラウール・ヒメネス',club:'フラム'},{pos:'FW',name:'サンティアゴ・ヒメネス',club:'ミラン'},{pos:'FW',name:'セサル・ウエルタ',club:'アンデルレヒト'}
+  ],
+  RSA: [
+    {pos:'GK',name:'ロンウェン・ウィリアムズ',club:'マメロディ・サンダウンズ'},{pos:'GK',name:'リカルド・ゴス',club:'シウェレレ'},
+    {pos:'DF',name:'ブラッドリー・クロス',club:'カイザー・チーフス'},{pos:'DF',name:'クリショ・ムダウ',club:'マメロディ・サンダウンズ'},{pos:'DF',name:'オルウェトゥ・マカンヤ',club:'フィラデルフィア'},{pos:'DF',name:'サムケレ・カビニ',club:'モルデ'},
+    {pos:'MF',name:'テボホ・モコエナ',club:'マメロディ・サンダウンズ'},{pos:'MF',name:'ジェイデン・アダムス',club:'マメロディ・サンダウンズ'},
+    {pos:'FW',name:'ライル・フォスター',club:'バーンリー'},{pos:'FW',name:'タペロ・モレナ',club:'マメロディ・サンダウンズ'},{pos:'FW',name:'エヴィデンス・マクゴパ',club:'オーランド'}
+  ],
+  KOR: [
+    {pos:'GK',name:'キム・スンギュ',club:'FC東京'},{pos:'GK',name:'ソン・ボムグン',club:'全北現代'},
+    {pos:'DF',name:'キム・ミンジェ',club:'バイエルン'},{pos:'DF',name:'イェンス・カストロプ',club:'ボルシアMG'},{pos:'DF',name:'イ・ギヒョク',club:'江原'},{pos:'DF',name:'キム・テヒョン',club:'鹿島'},
+    {pos:'MF',name:'イ・ガンイン',club:'パリSG'},{pos:'MF',name:'ファン・インボム',club:'フェイエノールト'},{pos:'MF',name:'ファン・ヒチャン',club:'ウルバーハンプトン'},{pos:'MF',name:'ヤン・ヒョンジュン',club:'セルティック'},
+    {pos:'FW',name:'ソン・フンミン',club:'LAFC'},{pos:'FW',name:'オ・ヒョンギュ',club:'ベシクタシュ'}
+  ],
+  CZE: [
+    {pos:'GK',name:'インジフ・スタニェク',club:'スラヴィア・プラハ'},{pos:'GK',name:'マチェイ・コヴァーシュ',club:'PSV'},
+    {pos:'DF',name:'ラディスラフ・クレイチー',club:'ウォルヴァーハンプトン'},{pos:'DF',name:'ダヴィド・ジマ',club:'スラヴィア'},{pos:'DF',name:'ダヴィド・ドウデラ',club:'スラヴィア'},
+    {pos:'MF',name:'トマーシュ・ソウチェク',club:'ウェストハム'},{pos:'MF',name:'パヴェル・シュルツ',club:'リヨン'},{pos:'MF',name:'ルカーシュ・プロヴォド',club:'スラヴィア'},
+    {pos:'FW',name:'パトリク・シック',club:'レヴァークーゼン'},{pos:'FW',name:'アダム・ハロジェク',club:'ホッフェンハイム'}
+  ],
+  CAN: [
+    {pos:'GK',name:'デイン・セント・クレア',club:'インテル・マイアミ'},{pos:'GK',name:'マクシム・クレポー',club:'オーランド'},
+    {pos:'DF',name:'アルフォンソ・デイヴィス',club:'バイエルン・ミュンヘン'},{pos:'DF',name:'アリスター・ジョンストン',club:'セルティック'},{pos:'DF',name:'デレク・コーネリアス',club:'レンジャーズ'},
+    {pos:'MF',name:'スティーヴン・エウスタキオ',club:'ポルト'},{pos:'MF',name:'タジョン・ブキャナン',club:'ビジャレアル'},{pos:'MF',name:'イスマエル・コネ',club:'サッスオーロ'},
+    {pos:'FW',name:'ジョナサン・デイビッド',club:'ユヴェントス'},{pos:'FW',name:'サイル・ラリン',club:'マジョルカ'}
+  ],
+  BIH: [
+    {pos:'GK',name:'ニコラ・ヴァシリ',club:'ザンクトパウリ'},
+    {pos:'DF',name:'セアド・コラシナツ',club:'アタランタ'},{pos:'DF',name:'アマル・デディッチ',club:'ベンフィカ'},{pos:'DF',name:'タリク・ムハレモヴィッチ',club:'サッスオーロ'},
+    {pos:'MF',name:'エスミル・バイラクタレヴィッチ',club:'PSV'},{pos:'MF',name:'ベンジャミン・タヒロヴィッチ',club:'ブレンビーIF'},
+    {pos:'FW',name:'エルメディン・デミロヴィッチ',club:'シュトゥットガルト'},{pos:'FW',name:'エディン・ジェコ',club:'シャルケ'},{pos:'FW',name:'ハリス・タバコヴィッチ',club:'ボルシアMG'}
+  ],
+  QAT: [
+    {pos:'GK',name:'マシャアル・バルシャム',club:'アル・サッド'},
+    {pos:'DF',name:'ペドロ・ミゲル',club:'アル・サッド'},{pos:'DF',name:'ブアレム・フヒ',club:'アル・サッド'},
+    {pos:'MF',name:'アブドゥルアジズ・ハテム',club:'アル・ラーヤン'},{pos:'MF',name:'ジャッセム・ガベル',club:'アル・ラーヤン'},
+    {pos:'FW',name:'アクラム・アフィフ',club:'アル・サッド'},{pos:'FW',name:'アルモエズ・アリ',club:'アル・ドゥハイル'},{pos:'FW',name:'ハッサン・アル=ハイドス',club:'アル・サッド'}
+  ],
+  SUI: [
+    {pos:'GK',name:'グレゴール・コーベル',club:'ドルトムント'},
+    {pos:'DF',name:'マヌエル・アカンジ',club:'インテル'},{pos:'DF',name:'ニコ・エルベディ',club:'ボルシアMG'},{pos:'DF',name:'リカルド・ロドリゲス',club:'ベティス'},
+    {pos:'MF',name:'グラニト・ジャカ',club:'サンダーランド'},{pos:'MF',name:'レモ・フロイラー',club:'ボローニャ'},{pos:'MF',name:'アルドン・ヤシャリ',club:'ミラン'},
+    {pos:'FW',name:'ブレール・エンボロ',club:'レンヌ'},{pos:'FW',name:'ノア・オカフォー',club:'リーズ'}
+  ],
+  BRA: [
+    {pos:'GK',name:'アリソン',club:'リヴァプール'},{pos:'GK',name:'エデルソン',club:'フェネルバフチェ'},
+    {pos:'DF',name:'マルキーニョス',club:'パリSG'},{pos:'DF',name:'ガブリエウ・マガリャンイス',club:'アーセナル'},{pos:'DF',name:'ブレーメル',club:'ユヴェントス'},
+    {pos:'MF',name:'ブルーノ・ギマランイス',club:'ニューカッスル'},{pos:'MF',name:'ルーカス・パケタ',club:'フラメンゴ'},{pos:'MF',name:'カゼミーロ',club:'マンU'},
+    {pos:'FW',name:'ヴィニシウス・ジュニオール',club:'レアル・マドリー'},{pos:'FW',name:'ラフィーニャ',club:'バルセロナ'},{pos:'FW',name:'ネイマール',club:'サントス'},{pos:'FW',name:'エンドリッキ',club:'リヨン'}
+  ],
+  MAR: [
+    {pos:'GK',name:'ヤシン・ブヌ',club:'アル・ヒラル'},
+    {pos:'DF',name:'アクラフ・ハキミ',club:'パリSG'},{pos:'DF',name:'ヌサイル・マズラウィ',club:'マンU'},{pos:'DF',name:'ナイフ・アゲルド',club:'マルセイユ'},
+    {pos:'MF',name:'ソフィアン・アムラバト',club:'ベティス'},{pos:'MF',name:'アゼディン・ウナヒ',club:'ジローナ'},{pos:'MF',name:'ビラル・エル・カンヌス',club:'シュトゥットガルト'},
+    {pos:'FW',name:'ブラヒム・ディアス',club:'レアル・マドリー'},{pos:'FW',name:'スフィアン・ラヒミ',club:'アル・アイン'}
+  ],
+  HAI: [
+    {pos:'GK',name:'ジョニー・プラシード',club:'バスティア'},
+    {pos:'DF',name:'ジャン・ケヴィン・デュヴェルン',club:'ヘント'},{pos:'DF',name:'ハンネス・デルクロワ',club:'ルガーノ'},
+    {pos:'MF',name:'ジャン・リクネル・ベルガルド',club:'ウォルバーハンプトン'},{pos:'MF',name:'ダンリー・ジャン・ジャック',club:'フィラデルフィア'},
+    {pos:'FW',name:'ウィルソン・イシドール',club:'サンダーランド'},{pos:'FW',name:'デリック・エティエンヌ',club:'トロント'}
+  ],
+  SCO: [
+    {pos:'GK',name:'アンガス・ガン',club:'ノッティンガム'},{pos:'GK',name:'クレイグ・ゴードン',club:'ハーツ'},
+    {pos:'DF',name:'アンドリュー・ロバートソン',club:'リヴァプール'},{pos:'DF',name:'キーラン・ティアニー',club:'セルティック'},{pos:'DF',name:'アーロン・ヒッキー',club:'ブレントフォード'},
+    {pos:'MF',name:'ジョン・マッギン',club:'アストンヴィラ'},{pos:'MF',name:'ビリー・ギルモア',club:'ナポリ'},{pos:'MF',name:'スコット・マクトミネイ',club:'ナポリ'},
+    {pos:'FW',name:'チェ・アダムス',club:'トリノ'},{pos:'FW',name:'ローレンス・シャンクランド',club:'ハーツ'}
+  ],
+  USA: [
+    {pos:'GK',name:'マット・ターナー',club:'ニューイングランド'},
+    {pos:'DF',name:'アントニー・ロビンソン',club:'フラム'},{pos:'DF',name:'セルジーニョ・デスト',club:'PSV'},{pos:'DF',name:'クリス・リチャーズ',club:'クリスタル・パレス'},
+    {pos:'MF',name:'クリスチャン・プリシッチ',club:'ACミラン'},{pos:'MF',name:'ウェストン・マッケニー',club:'ユヴェントス'},{pos:'MF',name:'タイラー・アダムス',club:'ボーンマス'},{pos:'MF',name:'ジオ・レイナ',club:'ボルシアMG'},
+    {pos:'FW',name:'フォラリン・バログン',club:'モナコ'},{pos:'FW',name:'リカルド・ペピ',club:'PSV'},{pos:'FW',name:'ティモシー・ウェア',club:'マルセイユ'}
+  ],
+  PAR: [
+    {pos:'GK',name:'ガストン・オルベイラ',club:'オリンピア'},
+    {pos:'DF',name:'グスタボ・ゴメス',club:'パルメイラス'},{pos:'DF',name:'ジュニオール・アロンソ',club:'アトレチコ・ミネイロ'},
+    {pos:'MF',name:'ミゲル・アルミロン',club:'アトランタ・ユナイテッド'},{pos:'MF',name:'ディエゴ・ゴメス',club:'ブライトン'},
+    {pos:'FW',name:'フリオ・エンシソ',club:'ストラスブール'},{pos:'FW',name:'アントニオ・サナブリア',club:'クレモネーゼ'},{pos:'FW',name:'ラモン・ソサ',club:'パルメイラス'}
+  ],
+  AUS: [
+    {pos:'GK',name:'マシュー・ライアン',club:'レバンテ'},
+    {pos:'DF',name:'ハリー・ソウター',club:'レスター'},{pos:'DF',name:'アレッサンドロ・チルカティ',club:'パルマ'},{pos:'DF',name:'ジョーディ・ボス',club:'フェイエノールト'},
+    {pos:'MF',name:'ジャクソン・アーバイン',club:'ザンクト・パウリ'},
+    {pos:'FW',name:'マシュー・レッキー',club:'メルボルン'},{pos:'FW',name:'クリスティアン・ヴォルパト',club:'サッスオーロ'},{pos:'FW',name:'テテ・イェンギ',club:'FC町田ゼルビア'}
+  ],
+  TUR: [
+    {pos:'GK',name:'メルト・ギュノク',club:'フェネルバフチェ'},
+    {pos:'DF',name:'メリフ・デミラル',club:'アル・アハリ'},{pos:'DF',name:'チャーラル・ソユンジュ',club:'フェネルバフチェ'},{pos:'DF',name:'フェルディ・カドゥオール',club:'ブライトン'},
+    {pos:'MF',name:'ハカン・チャルハノール',club:'インテル'},{pos:'MF',name:'サリフ・エズジャン',club:'ドルトムント'},{pos:'MF',name:'オルクン・コクチュ',club:'ベシクタシュ'},
+    {pos:'FW',name:'アルダ・ギュレル',club:'レアル・マドリード'},{pos:'FW',name:'ケナン・ユルドゥズ',club:'ユヴェントス'}
+  ],
+  GER: [
+    {pos:'GK',name:'マヌエル・ノイアー',club:'バイエルン・ミュンヘン'},
+    {pos:'DF',name:'アントニオ・リュディガー',club:'レアル・マドリード'},{pos:'DF',name:'ヨシュア・キミッヒ',club:'バイエルン'},{pos:'DF',name:'ニコ・シュロッターベック',club:'ドルトムント'},
+    {pos:'MF',name:'ジャマル・ムシアラ',club:'バイエルン'},{pos:'MF',name:'カイ・ハヴェルツ',club:'アーセナル'},{pos:'MF',name:'レオン・ゴレツカ',club:'バイエルン'},
+    {pos:'FW',name:'フロリアン・ヴィルツ',club:'リヴァプール'},{pos:'FW',name:'レロイ・サネ',club:'ガラタサライ'},{pos:'FW',name:'ニック・ヴォルテマデ',club:'ニューカッスル'}
+  ],
+  CUW: [
+    {pos:'GK',name:'エロイ・ローム',club:'マイアミFC'},
+    {pos:'DF',name:'アルマンド・オビスポ',club:'PSV'},{pos:'DF',name:'ロション・ファン・エイマ',club:'RKC'},
+    {pos:'MF',name:'レアンドロ・バクーナ',club:'ウードゥル'},{pos:'MF',name:'ジュニーニョ・バクーナ',club:'フォレンダム'},
+    {pos:'FW',name:'タヒス・チョン',club:'シェフィールドU'},{pos:'FW',name:'ユルゲン・ロカディア',club:'マイアミFC'}
+  ],
+  CIV: [
+    {pos:'GK',name:'アルバン・ラフォン',club:'パナシナイコス'},
+    {pos:'DF',name:'ウスマン・ディオマンデ',club:'スポルティング'},{pos:'DF',name:'ウィルフリード・シンゴ',club:'ガラタサライ'},{pos:'DF',name:'オディロン・コスヌ',club:'アタランタ'},
+    {pos:'MF',name:'セコ・フォファナ',club:'ポルト'},{pos:'MF',name:'イブラヒム・サンガレ',club:'ノッティンガム'},{pos:'MF',name:'フランク・ケシエ',club:'アル・アハリ'},
+    {pos:'FW',name:'アマド・ディアロ',club:'マンU'},{pos:'FW',name:'シモン・アディングラ',club:'モナコ'},{pos:'FW',name:'アンジュ＝ヨアン・ボニー',club:'インテル'}
+  ],
+  ECU: [
+    {pos:'GK',name:'エルナン・ガリンデス',club:'ウラカン'},
+    {pos:'DF',name:'ピエロ・インカピエ',club:'アーセナル'},{pos:'DF',name:'ウィリアン・パチョ',club:'パリSG'},{pos:'DF',name:'ペルビス・エストゥピニャン',club:'ACミラン'},
+    {pos:'MF',name:'モイセス・カイセド',club:'チェルシー'},{pos:'MF',name:'ケンドリー・パエス',club:'リバープレート'},
+    {pos:'FW',name:'エネル・バレンシア',club:'パチューカ'},{pos:'FW',name:'アントニー・バレンシア',club:'ロイヤル・アントワープ'}
+  ],
+  NED: [
+    {pos:'GK',name:'バルト・フェルブルッヘン',club:'ブライトン'},{pos:'GK',name:'マルク・フレッケン',club:'レヴァークーゼン'},
+    {pos:'DF',name:'フィルジル・ファン・ダイク',club:'リヴァプール'},{pos:'DF',name:'ナタン・アケ',club:'マンC'},{pos:'DF',name:'デンゼル・ダンフリース',club:'インテル'},{pos:'DF',name:'ユリエン・ティンバー',club:'アーセナル'},
+    {pos:'MF',name:'フレンキー・デ・ヨング',club:'バルセロナ'},{pos:'MF',name:'ライアン・フラーフェンベルフ',club:'リヴァプール'},{pos:'MF',name:'トゥーン・コープマイネルス',club:'ユヴェントス'},
+    {pos:'FW',name:'コーディ・ガクポ',club:'リヴァプール'},{pos:'FW',name:'メンフィス・デパイ',club:'コリンチャンス'}
+  ],
+  JPN: [
+    {pos:'GK',name:'鈴木彩艶',club:'パルマ'},{pos:'GK',name:'大迫敬介',club:'サンフレッチェ広島'},{pos:'GK',name:'早川友基',club:'鹿島アントラーズ'},
+    {pos:'DF',name:'冨安健洋',club:'アヤックス'},{pos:'DF',name:'板倉滉',club:'アヤックス'},{pos:'DF',name:'伊藤洋輝',club:'バイエルン・ミュンヘン'},{pos:'DF',name:'菅原由勢',club:'ヴェルダー・ブレーメン'},{pos:'DF',name:'谷口彰悟',club:'シント＝トロイデン'},{pos:'DF',name:'渡辺剛',club:'フェイエノールト'},{pos:'DF',name:'瀬古歩夢',club:'ル・アーブル'},{pos:'DF',name:'長友佑都',club:'FC東京'},
+    {pos:'MF',name:'久保建英',club:'レアル・ソシエダ'},{pos:'MF',name:'遠藤航',club:'リヴァプール'},{pos:'MF',name:'鎌田大地',club:'クリスタル・パレス'},{pos:'MF',name:'堂安律',club:'フランクフルト'},{pos:'MF',name:'田中碧',club:'リーズ'},{pos:'MF',name:'伊東純也',club:'ゲンク'},{pos:'MF',name:'佐野海舟',club:'マインツ'},{pos:'MF',name:'中村敬斗',club:'スタッド・ランス'},{pos:'MF',name:'鈴木唯人',club:'フライブルク'},
+    {pos:'FW',name:'前田大然',club:'セルティック'},{pos:'FW',name:'上田綺世',club:'フェイエノールト'},{pos:'FW',name:'小川航基',club:'NECナイメヘン'},{pos:'FW',name:'後藤啓介',club:'シント＝トロイデン'},{pos:'FW',name:'塩貝健人',club:'ヴォルフスブルク'}
+  ],
+  SWE: [
+    {pos:'GK',name:'ヤコブ・ヴィデル・ゼッテルストレーム',club:'ダービー'},
+    {pos:'DF',name:'ヴィクトル・リンデレフ',club:'アストンヴィラ'},{pos:'DF',name:'イサク・ヒエン',club:'アタランタ'},{pos:'DF',name:'ガブリエル・グズムンドソン',club:'リーズ'},
+    {pos:'MF',name:'ヤシン・アヤリ',club:'ブライトン'},{pos:'MF',name:'ルーカス・ベリヴァル',club:'トッテナム'},
+    {pos:'FW',name:'アレクサンデル・イサク',club:'リヴァプール'},{pos:'FW',name:'ヴィクトル・ギェケレシュ',club:'アーセナル'},{pos:'FW',name:'アントニー・エランガ',club:'ニューカッスル'}
+  ],
+  TUN: [
+    {pos:'GK',name:'アイメン・ダハメン',club:'CSスファクシアン'},
+    {pos:'DF',name:'モンタサル・タルビ',club:'ロリアン'},{pos:'DF',name:'オマル・レキク',club:'NKマリボル'},
+    {pos:'MF',name:'ハンニバル・メイブリ',club:'バーンリー'},{pos:'MF',name:'ラニ・ケディラ',club:'ウニオン・ベルリン'},
+    {pos:'FW',name:'ハリル・アヤリ',club:'パリSG'},{pos:'FW',name:'エリアス・アシュリ',club:'コペンハーゲン'}
+  ],
+  BEL: [
+    {pos:'GK',name:'ティボー・クルトワ',club:'レアル・マドリード'},
+    {pos:'DF',name:'ゼノ・デバスト',club:'スポルティング'},{pos:'DF',name:'ティモシー・カスターニュ',club:'フラム'},{pos:'DF',name:'アルトゥール・テアテ',club:'フランクフルト'},
+    {pos:'MF',name:'ケビン・デ・ブライネ',club:'ナポリ'},{pos:'MF',name:'アマドゥ・オナナ',club:'アストンヴィラ'},{pos:'MF',name:'ユーリ・ティーレマンス',club:'アストンヴィラ'},
+    {pos:'FW',name:'ロメル・ルカク',club:'ナポリ'},{pos:'FW',name:'シャルル・デ・ケテラエル',club:'アタランタ'},{pos:'FW',name:'ジェレミー・ドク',club:'マンC'}
+  ],
+  EGY: [
+    {pos:'GK',name:'モハメド・エル・シェナウィ',club:'アル・アハリ'},
+    {pos:'DF',name:'ヤセル・イブラヒム',club:'アル・アハリ'},{pos:'DF',name:'モハメド・ハニー',club:'アル・アハリ'},
+    {pos:'MF',name:'モハメド・サラー',club:'リヴァプール'},{pos:'MF',name:'マハムード・"トレゼゲ"',club:'アル・アハリ'},
+    {pos:'FW',name:'オマル・マルムシュ',club:'マンC'}
+  ],
+  IRN: [
+    {pos:'GK',name:'アリレザ・ベイランヴァンド',club:'トラークトゥール'},
+    {pos:'DF',name:'エフサン・ハジサフィ',club:'セパハン'},{pos:'DF',name:'ミラド・モハマディ',club:'ペルセポリス'},
+    {pos:'MF',name:'アリレザ・ジャハンバクシュ',club:'デンデル'},{pos:'MF',name:'サマン・ゴドス',club:'アル・イテハド'},
+    {pos:'FW',name:'メフディ・タレミ',club:'オリンピアコス'},{pos:'FW',name:'メフディ・ガエディ',club:'アル・ナスル'}
+  ],
+  NZL: [
+    {pos:'GK',name:'マックス・クロコム',club:'ミルウォール'},
+    {pos:'DF',name:'マイケル・ボクソール',club:'ミネソタ'},{pos:'DF',name:'リベラト・カカーチェ',club:'レクサム'},
+    {pos:'MF',name:'ジョー・ベル',club:'ヴァイキング'},{pos:'MF',name:'ライアン・トーマス',club:'PECズウォレ'},
+    {pos:'FW',name:'クリス・ウッド',club:'ノッティンガム'}
+  ],
+  ESP: [
+    {pos:'GK',name:'ウナイ・シモン',club:'アトレティック'},{pos:'GK',name:'ダビド・ラヤ',club:'アーセナル'},
+    {pos:'DF',name:'マルク・ククレジャ',club:'チェルシー'},{pos:'DF',name:'パウ・クバルシ',club:'バルセロナ'},{pos:'DF',name:'アレックス・グリマルド',club:'レヴァークーゼン'},
+    {pos:'MF',name:'ペドリ',club:'バルセロナ'},{pos:'MF',name:'ロドリ',club:'マンC'},{pos:'MF',name:'ダニ・オルモ',club:'バルセロナ'},
+    {pos:'FW',name:'ラミン・ヤマル',club:'バルセロナ'},{pos:'FW',name:'ニコ・ウィリアムズ',club:'アスレティック'},{pos:'FW',name:'ミケル・オヤルサバル',club:'ソシエダ'}
+  ],
+  CPV: [
+    {pos:'GK',name:'ヴォジーニャ',club:'チャヴェス'},
+    {pos:'DF',name:'ローガン・コスタ',club:'ビジャレアル'},{pos:'DF',name:'スティーヴン・モレイラ',club:'コロンバス'},
+    {pos:'MF',name:'ジャミロ・モンテイロ',club:'PECズウォレ'},
+    {pos:'FW',name:'ジョバネ・カブラル',club:'エストレラ・アマドーラ'},{pos:'FW',name:'ヌーノ・ダ・コスタ',club:'バシャクシェヒル'}
+  ],
+  KSA: [
+    {pos:'GK',name:'モハメド・アル・オワイス',club:'アル・ウラー'},
+    {pos:'DF',name:'サウード・アブドゥルハミド',club:'RCランス'},{pos:'DF',name:'ハッサーン・タムバクティ',club:'アル・ヒラル'},
+    {pos:'MF',name:'サレム・アル・ドサリ',club:'アル・ヒラル'},{pos:'MF',name:'モハメド・カンノ',club:'アル・ヒラル'},
+    {pos:'FW',name:'フィラース・アル・ブライカーン',club:'アル・アハリ'},{pos:'FW',name:'サレー・アル・シェフリ',club:'アル・イテハド'}
+  ],
+  URU: [
+    {pos:'GK',name:'フェルナンド・ムスレラ',club:'エストゥディアンテス'},
+    {pos:'DF',name:'ロナルド・アラウホ',club:'バルセロナ'},{pos:'DF',name:'ホセ・マリア・ヒメネス',club:'アトレティコ・マドリー'},{pos:'DF',name:'マティアス・オリベラ',club:'ナポリ'},
+    {pos:'MF',name:'フェデリコ・バルベルデ',club:'レアル・マドリード'},{pos:'MF',name:'ロドリゴ・ベンタンクール',club:'トッテナム'},{pos:'MF',name:'マヌエル・ウガルテ',club:'マンU'},
+    {pos:'FW',name:'ダルウィン・ヌニェス',club:'アル・ヒラル'},{pos:'FW',name:'ファクンド・ペリストリ',club:'パナシナイコス'}
+  ],
+  FRA: [
+    {pos:'GK',name:'マイク・メニャン',club:'ACミラン'},
+    {pos:'DF',name:'ウィリアン・サリバ',club:'アーセナル'},{pos:'DF',name:'イブラヒマ・コナテ',club:'リヴァプール'},{pos:'DF',name:'テオ・エルナンデス',club:'アル・ヒラル'},{pos:'DF',name:'ジュール・クンデ',club:'バルセロナ'},
+    {pos:'MF',name:'オーレリアン・チュアメニ',club:'レアル・マドリード'},{pos:'MF',name:'エンゴロ・カンテ',club:'フェネルバフチェ'},{pos:'MF',name:'アドリアン・ラビオ',club:'ACミラン'},
+    {pos:'FW',name:'キリアン・エンバペ',club:'レアル・マドリード'},{pos:'FW',name:'ウスマン・デンベレ',club:'パリSG'},{pos:'FW',name:'マイケル・オリーセ',club:'バイエルン'}
+  ],
+  SEN: [
+    {pos:'GK',name:'エドゥアール・メンディ',club:'アル・アハリ'},
+    {pos:'DF',name:'カリドゥ・クリバリ',club:'アル・ヒラル'},{pos:'DF',name:'ママドゥ・サール',club:'チェルシー'},
+    {pos:'MF',name:'パプ・マタル・サール',club:'トッテナム'},{pos:'MF',name:'イドゥリサ・ゲイエ',club:'エヴァートン'},{pos:'MF',name:'ラミン・カマラ',club:'モナコ'},
+    {pos:'FW',name:'サディオ・マネ',club:'アル・ナスル'},{pos:'FW',name:'ニコラス・ジャクソン',club:'バイエルン'},{pos:'FW',name:'イスマイラ・サール',club:'クリスタル・パレス'}
+  ],
+  IRQ: [
+    {pos:'GK',name:'ジャラル・ハッサン',club:'アル・ザウラー'},
+    {pos:'DF',name:'レビン・スラカ',club:'ポートFC'},{pos:'DF',name:'メルカス・ドスキ',club:'プルゼニ'},
+    {pos:'MF',name:'ジダン・アーマー・イクバル',club:'ユトレヒト'},{pos:'MF',name:'マルコ・ファルジ',club:'ヴェネツィア'},
+    {pos:'FW',name:'アリ・アル・ハマディ',club:'ルートン'},{pos:'FW',name:'モハナド・アリ',club:'ディッバ'}
+  ],
+  NOR: [
+    {pos:'GK',name:'エリアン・ニュラン',club:'セビージャ'},
+    {pos:'DF',name:'ユリアン・リエルソン',club:'ドルトムント'},{pos:'DF',name:'クリストフェル・アイエル',club:'ブレントフォード'},
+    {pos:'MF',name:'マルティン・ウーデゴール',club:'アーセナル'},{pos:'MF',name:'サンデル・ベルゲ',club:'フラム'},{pos:'MF',name:'アントニオ・ヌサ',club:'ライプツィヒ'},
+    {pos:'FW',name:'アーリング・ハーランド',club:'マンC'},{pos:'FW',name:'アレクサンデル・セルロート',club:'アトレティコ'}
+  ],
+  ARG: [
+    {pos:'GK',name:'エミリアーノ・マルティネス',club:'アストンヴィラ'},
+    {pos:'DF',name:'クリスティアン・ロメロ',club:'トッテナム'},{pos:'DF',name:'リサンドロ・マルティネス',club:'マンU'},{pos:'DF',name:'ニコラス・オタメンディ',club:'ベンフィカ'},
+    {pos:'MF',name:'アレクシス・マック・アリスター',club:'リヴァプール'},{pos:'MF',name:'エンソ・フェルナンデス',club:'チェルシー'},{pos:'MF',name:'ロドリゴ・デ・パウル',club:'インテル・マイアミ'},
+    {pos:'FW',name:'リオネル・メッシ',club:'インテル・マイアミ'},{pos:'FW',name:'フリアン・アルバレス',club:'アトレティコ・マドリー'},{pos:'FW',name:'ラウタロ・マルティネス',club:'インテル'}
+  ],
+  ALG: [
+    {pos:'GK',name:'メルヴィン・マスティル',club:'スタッド・ニヨン'},
+    {pos:'DF',name:'ラミ・ベンセバイニ',club:'ドルトムント'},{pos:'DF',name:'ラヤン・アイト＝ヌーリ',club:'マンC'},
+    {pos:'MF',name:'イブラヒム・マザ',club:'レヴァークーゼン'},{pos:'MF',name:'ファレス・シャイビ',club:'フランクフルト'},
+    {pos:'FW',name:'リヤド・マフレズ',club:'アル・アハリ'},{pos:'FW',name:'アミーヌ・グイリ',club:'マルセイユ'}
+  ],
+  AUT: [
+    {pos:'GK',name:'パトリック・ペンツ',club:'ブレンビー'},
+    {pos:'DF',name:'ダヴィド・アラバ',club:'レアル・マドリー'},{pos:'DF',name:'ケヴィン・ダンソ',club:'トッテナム'},{pos:'DF',name:'シュテファン・ポッシュ',club:'マインツ'},
+    {pos:'MF',name:'マルセル・ザビッツァー',club:'ドルトムント'},{pos:'MF',name:'コンラート・ライマー',club:'バイエルン'},{pos:'MF',name:'クリストフ・バウムガルトナー',club:'ライプツィヒ'},
+    {pos:'FW',name:'マルコ・アルナウトヴィッチ',club:'ツルヴェナ・ズヴェズダ'},{pos:'FW',name:'ミヒャエル・グレゴリッチュ',club:'アウクスブルク'}
+  ],
+  JOR: [
+    {pos:'GK',name:'ヤジード・アブレイラ',club:'アル・フセイン'},
+    {pos:'DF',name:'ヤザン・アル・アラブ',club:'FCソウル'},{pos:'DF',name:'アブダッラー・ナシブ',club:'アル・ザウラー'},
+    {pos:'MF',name:'アメル・ジャモス',club:'アル・ザウラー'},
+    {pos:'FW',name:'ムサ・アル・ターマリ',club:'レンヌ'},{pos:'FW',name:'モハメド・アブズライク',club:'ラジャ'}
+  ],
+  POR: [
+    {pos:'GK',name:'ディオゴ・コスタ',club:'ポルト'},
+    {pos:'DF',name:'ルベン・ディアス',club:'マンC'},{pos:'DF',name:'ヌーノ・メンデス',club:'パリSG'},{pos:'DF',name:'ジョアン・カンセロ',club:'バルセロナ'},
+    {pos:'MF',name:'ブルーノ・フェルナンデス',club:'マンU'},{pos:'MF',name:'ベルナルド・シウバ',club:'マンC'},{pos:'MF',name:'ジョアン・ネヴェス',club:'パリSG'},
+    {pos:'FW',name:'クリスティアーノ・ロナウド',club:'アル・ナスル'},{pos:'FW',name:'ラファエウ・レオン',club:'ミラン'},{pos:'FW',name:'ペドロ・ネト',club:'チェルシー'}
+  ],
+  COD: [
+    {pos:'GK',name:'リオネル・ムパシ',club:'ル・アーヴル'},
+    {pos:'DF',name:'シャンセル・ムベンバ',club:'リール'},{pos:'DF',name:'アーロン・ワン＝ビサカ',club:'ウェストハム'},
+    {pos:'MF',name:'ンガラエル・ムカウ',club:'リール'},{pos:'MF',name:'ノア・サディキ',club:'サンダーランド'},
+    {pos:'FW',name:'ヨアヌ・ウィサ',club:'ニューカッスル'},{pos:'FW',name:'セドリック・バカンブ',club:'レアル・ベティス'}
+  ],
+  UZB: [
+    {pos:'GK',name:'ウトキル・ユスポフ',club:'ナフバホール'},
+    {pos:'DF',name:'アブドゥコディル・フサノフ',club:'マンC'},{pos:'DF',name:'ルスタム・アシュルマトフ',club:'エステグラル'},
+    {pos:'MF',name:'ジャロリディン・マシャリポフ',club:'エステグラル'},{pos:'MF',name:'アボスベク・ファイズラエフ',club:'バシャクシェヒル'},
+    {pos:'FW',name:'エルドル・ショムロドフ',club:'バシャクシェヒル'},{pos:'FW',name:'イゴール・セルゲエフ',club:'ペルセポリス'}
+  ],
+  COL: [
+    {pos:'GK',name:'ダビド・オスピナ',club:'アトレティコ・ナシオナル'},
+    {pos:'DF',name:'ダニエル・ムニョス',club:'クリスタル・パレス'},{pos:'DF',name:'ジョン・ルクミ',club:'ボローニャ'},
+    {pos:'MF',name:'ハメス・ロドリゲス',club:'ミネソタ'},{pos:'MF',name:'リチャルド・リオス',club:'ベンフィカ'},{pos:'MF',name:'ジェフェルソン・レルマ',club:'クリスタル・パレス'},
+    {pos:'FW',name:'ルイス・ディアス',club:'バイエルン'},{pos:'FW',name:'クチョ・エルナンデス',club:'べティス'}
+  ],
+  ENG: [
+    {pos:'GK',name:'ジョーダン・ピックフォード',club:'エヴァートン'},
+    {pos:'DF',name:'リース・ジェームズ',club:'チェルシー'},{pos:'DF',name:'ジョン・ストーンズ',club:'マンC'},{pos:'DF',name:'マーク・グエイ',club:'マンC'},
+    {pos:'MF',name:'ジュード・ベリンガム',club:'レアル・マドリード'},{pos:'MF',name:'デクラン・ライス',club:'アーセナル'},{pos:'MF',name:'コビー・メイヌー',club:'マンU'},
+    {pos:'FW',name:'ハリー・ケイン',club:'バイエルン'},{pos:'FW',name:'ブカヨ・サカ',club:'アーセナル'},{pos:'FW',name:'マーカス・ラッシュフォード',club:'バルセロナ'}
+  ],
+  CRO: [
+    {pos:'GK',name:'ドミニク・リヴァコヴィッチ',club:'ディナモ・ザグレブ'},
+    {pos:'DF',name:'ヨシュコ・グヴァルディオル',club:'マンC'},{pos:'DF',name:'ドゥイェ・チャレタ＝ツァル',club:'レアル・ソシエダ'},
+    {pos:'MF',name:'ルカ・モドリッチ',club:'ACミラン'},{pos:'MF',name:'マテオ・コヴァチッチ',club:'マンC'},{pos:'MF',name:'マリオ・パシャリッチ',club:'アタランタ'},
+    {pos:'FW',name:'アンドレイ・クラマリッチ',club:'ホッフェンハイム'},{pos:'FW',name:'イヴァン・ペリシッチ',club:'PSV'}
+  ],
+  GHA: [
+    {pos:'GK',name:'ローレンス・アティ＝ジギ',club:'ザンクト・ガレン'},
+    {pos:'DF',name:'アリドゥ・セイドゥ',club:'レンヌ'},{pos:'DF',name:'アブドゥル・ラーマン・ババ',club:'PAOK'},
+    {pos:'MF',name:'トーマス・パーテイ',club:'ビジャレアル'},{pos:'MF',name:'カマルディーン・スレマナ',club:'アタランタ'},
+    {pos:'FW',name:'イニャキ・ウィリアムズ',club:'アスレチック・ビルバオ'},{pos:'FW',name:'アントワーヌ・セメンヨ',club:'マンC'}
+  ],
+  PAN: [
+    {pos:'GK',name:'オルランド・モスケラ',club:'アル・フェイハ'},
+    {pos:'DF',name:'アミル・ムリージョ',club:'ベジクタシュ'},{pos:'DF',name:'フィデル・エスコバル',club:'サプリサ'},
+    {pos:'MF',name:'アニバル・ゴドイ',club:'サンディエゴ'},{pos:'MF',name:'アダルベルト・カラスキージャ',club:'UNAMプマース'},
+    {pos:'FW',name:'イスマエル・ディアス',club:'レオン'},{pos:'FW',name:'セシリオ・ウォーターマン',club:'コンセプシオン'}
+  ],
+}
+
+// ── Schedule Data（日本時間/ベトナム時間）────────────────
+// JST = UTC+9, ICT(Vietnam) = UTC+7
+// グループステージ主要試合
+const SCHEDULE = [
+  // GROUP A
+  {group:'グループA', date:'2026-06-12', timeJST:'09:00', timeVN:'07:00', home:'MEX', away:'RSA', venue:'SoFi Stadium, LA'},
+  {group:'グループA', date:'2026-06-12', timeJST:'03:00', timeVN:'01:00', home:'KOR', away:'CZE', venue:'MetLife Stadium, NY'},
+  {group:'グループA', date:'2026-06-16', timeJST:'07:00', timeVN:'05:00', home:'MEX', away:'CZE', venue:'Estadio Azteca'},
+  {group:'グループA', date:'2026-06-16', timeJST:'04:00', timeVN:'02:00', home:'RSA', away:'KOR', venue:'AT&T Stadium, Dallas'},
+  {group:'グループA', date:'2026-06-21', timeJST:'05:00', timeVN:'03:00', home:'MEX', away:'KOR', venue:'Rose Bowl, LA'},
+  {group:'グループA', date:'2026-06-21', timeJST:'05:00', timeVN:'03:00', home:'CZE', away:'RSA', venue:'Levi's Stadium'},
+  // GROUP B
+  {group:'グループB', date:'2026-06-12', timeJST:'06:00', timeVN:'04:00', home:'CAN', away:'BIH', venue:'BMO Field, Toronto'},
+  {group:'グループB', date:'2026-06-13', timeJST:'06:00', timeVN:'04:00', home:'QAT', away:'SUI', venue:'Gillette Stadium'},
+  {group:'グループB', date:'2026-06-17', timeJST:'07:00', timeVN:'05:00', home:'CAN', away:'SUI', venue:'BC Place'},
+  {group:'グループB', date:'2026-06-17', timeJST:'04:00', timeVN:'02:00', home:'BIH', away:'QAT', venue:'Lincoln Financial'},
+  {group:'グループB', date:'2026-06-22', timeJST:'05:00', timeVN:'03:00', home:'CAN', away:'QAT', venue:'BMO Field'},
+  {group:'グループB', date:'2026-06-22', timeJST:'05:00', timeVN:'03:00', home:'SUI', away:'BIH', venue:'Gillette Stadium'},
+  // GROUP C
+  {group:'グループC', date:'2026-06-13', timeJST:'09:00', timeVN:'07:00', home:'BRA', away:'HAI', venue:'SoFi Stadium'},
+  {group:'グループC', date:'2026-06-13', timeJST:'03:00', timeVN:'01:00', home:'MAR', away:'SCO', venue:'MetLife Stadium'},
+  {group:'グループC', date:'2026-06-18', timeJST:'07:00', timeVN:'05:00', home:'BRA', away:'SCO', venue:'Estadio Azteca'},
+  {group:'グループC', date:'2026-06-18', timeJST:'04:00', timeVN:'02:00', home:'MAR', away:'HAI', venue:'AT&T Stadium'},
+  {group:'グループC', date:'2026-06-23', timeJST:'05:00', timeVN:'03:00', home:'BRA', away:'MAR', venue:'Rose Bowl'},
+  {group:'グループC', date:'2026-06-23', timeJST:'05:00', timeVN:'03:00', home:'SCO', away:'HAI', venue:'Levi's Stadium'},
+  // GROUP D
+  {group:'グループD', date:'2026-06-14', timeJST:'09:00', timeVN:'07:00', home:'USA', away:'PAR', venue:'SoFi Stadium'},
+  {group:'グループD', date:'2026-06-14', timeJST:'03:00', timeVN:'01:00', home:'AUS', away:'TUR', venue:'MetLife Stadium'},
+  {group:'グループD', date:'2026-06-19', timeJST:'07:00', timeVN:'05:00', home:'USA', away:'TUR', venue:'Estadio Azteca'},
+  {group:'グループD', date:'2026-06-19', timeJST:'04:00', timeVN:'02:00', home:'PAR', away:'AUS', venue:'AT&T Stadium'},
+  {group:'グループD', date:'2026-06-24', timeJST:'05:00', timeVN:'03:00', home:'USA', away:'AUS', venue:'Rose Bowl'},
+  {group:'グループD', date:'2026-06-24', timeJST:'05:00', timeVN:'03:00', home:'TUR', away:'PAR', venue:'Levi's Stadium'},
+  // GROUP E
+  {group:'グループE', date:'2026-06-14', timeJST:'06:00', timeVN:'04:00', home:'GER', away:'CUW', venue:'Gillette Stadium'},
+  {group:'グループE', date:'2026-06-15', timeJST:'06:00', timeVN:'04:00', home:'CIV', away:'ECU', venue:'Lincoln Financial'},
+  {group:'グループE', date:'2026-06-20', timeJST:'07:00', timeVN:'05:00', home:'GER', away:'ECU', venue:'BC Place'},
+  {group:'グループE', date:'2026-06-20', timeJST:'04:00', timeVN:'02:00', home:'CUW', away:'CIV', venue:'BMO Field'},
+  {group:'グループE', date:'2026-06-25', timeJST:'05:00', timeVN:'03:00', home:'GER', away:'CIV', venue:'Gillette Stadium'},
+  {group:'グループE', date:'2026-06-25', timeJST:'05:00', timeVN:'03:00', home:'ECU', away:'CUW', venue:'Lincoln Financial'},
+  // GROUP F - 日本の試合
+  {group:'グループF', date:'2026-06-15', timeJST:'09:00', timeVN:'07:00', home:'NED', away:'SWE', venue:'SoFi Stadium'},
+  {group:'グループF', date:'2026-06-15', timeJST:'03:00', timeVN:'01:00', home:'JPN', away:'TUN', venue:'MetLife Stadium'},
+  {group:'グループF', date:'2026-06-20', timeJST:'07:00', timeVN:'05:00', home:'NED', away:'TUN', venue:'Estadio Azteca'},
+  {group:'グループF', date:'2026-06-20', timeJST:'04:00', timeVN:'02:00', home:'JPN', away:'SWE', venue:'AT&T Stadium'},
+  {group:'グループF', date:'2026-06-25', timeJST:'05:00', timeVN:'03:00', home:'NED', away:'JPN', venue:'Rose Bowl'},
+  {group:'グループF', date:'2026-06-25', timeJST:'05:00', timeVN:'03:00', home:'SWE', away:'TUN', venue:'Levi's Stadium'},
+  // GROUP G
+  {group:'グループG', date:'2026-06-16', timeJST:'09:00', timeVN:'07:00', home:'BEL', away:'NZL', venue:'SoFi Stadium'},
+  {group:'グループG', date:'2026-06-16', timeJST:'03:00', timeVN:'01:00', home:'EGY', away:'IRN', venue:'MetLife Stadium'},
+  {group:'グループG', date:'2026-06-21', timeJST:'07:00', timeVN:'05:00', home:'BEL', away:'IRN', venue:'Estadio Azteca'},
+  {group:'グループG', date:'2026-06-21', timeJST:'04:00', timeVN:'02:00', home:'EGY', away:'NZL', venue:'AT&T Stadium'},
+  {group:'グループG', date:'2026-06-26', timeJST:'05:00', timeVN:'03:00', home:'BEL', away:'EGY', venue:'Rose Bowl'},
+  {group:'グループG', date:'2026-06-26', timeJST:'05:00', timeVN:'03:00', home:'IRN', away:'NZL', venue:'Levi's Stadium'},
+  // GROUP H
+  {group:'グループH', date:'2026-06-17', timeJST:'09:00', timeVN:'07:00', home:'ESP', away:'CPV', venue:'SoFi Stadium'},
+  {group:'グループH', date:'2026-06-17', timeJST:'03:00', timeVN:'01:00', home:'KSA', away:'URU', venue:'MetLife Stadium'},
+  {group:'グループH', date:'2026-06-22', timeJST:'07:00', timeVN:'05:00', home:'ESP', away:'URU', venue:'Estadio Azteca'},
+  {group:'グループH', date:'2026-06-22', timeJST:'04:00', timeVN:'02:00', home:'CPV', away:'KSA', venue:'AT&T Stadium'},
+  {group:'グループH', date:'2026-06-27', timeJST:'05:00', timeVN:'03:00', home:'ESP', away:'KSA', venue:'Rose Bowl'},
+  {group:'グループH', date:'2026-06-27', timeJST:'05:00', timeVN:'03:00', home:'URU', away:'CPV', venue:'Levi's Stadium'},
+  // GROUP I
+  {group:'グループI', date:'2026-06-18', timeJST:'09:00', timeVN:'07:00', home:'FRA', away:'NOR', venue:'SoFi Stadium'},
+  {group:'グループI', date:'2026-06-18', timeJST:'03:00', timeVN:'01:00', home:'SEN', away:'IRQ', venue:'MetLife Stadium'},
+  {group:'グループI', date:'2026-06-23', timeJST:'07:00', timeVN:'05:00', home:'FRA', away:'IRQ', venue:'Estadio Azteca'},
+  {group:'グループI', date:'2026-06-23', timeJST:'04:00', timeVN:'02:00', home:'NOR', away:'SEN', venue:'AT&T Stadium'},
+  {group:'グループI', date:'2026-06-28', timeJST:'05:00', timeVN:'03:00', home:'FRA', away:'SEN', venue:'Rose Bowl'},
+  {group:'グループI', date:'2026-06-28', timeJST:'05:00', timeVN:'03:00', home:'IRQ', away:'NOR', venue:'Levi's Stadium'},
+  // GROUP J
+  {group:'グループJ', date:'2026-06-19', timeJST:'09:00', timeVN:'07:00', home:'ARG', away:'ALG', venue:'SoFi Stadium'},
+  {group:'グループJ', date:'2026-06-19', timeJST:'03:00', timeVN:'01:00', home:'AUT', away:'JOR', venue:'MetLife Stadium'},
+  {group:'グループJ', date:'2026-06-24', timeJST:'07:00', timeVN:'05:00', home:'ARG', away:'JOR', venue:'Estadio Azteca'},
+  {group:'グループJ', date:'2026-06-24', timeJST:'04:00', timeVN:'02:00', home:'ALG', away:'AUT', venue:'AT&T Stadium'},
+  {group:'グループJ', date:'2026-06-29', timeJST:'05:00', timeVN:'03:00', home:'ARG', away:'AUT', venue:'Rose Bowl'},
+  {group:'グループJ', date:'2026-06-29', timeJST:'05:00', timeVN:'03:00', home:'JOR', away:'ALG', venue:'Levi's Stadium'},
+  // GROUP K
+  {group:'グループK', date:'2026-06-20', timeJST:'09:00', timeVN:'07:00', home:'POR', away:'COD', venue:'SoFi Stadium'},
+  {group:'グループK', date:'2026-06-20', timeJST:'03:00', timeVN:'01:00', home:'UZB', away:'COL', venue:'MetLife Stadium'},
+  {group:'グループK', date:'2026-06-25', timeJST:'07:00', timeVN:'05:00', home:'POR', away:'COL', venue:'Estadio Azteca'},
+  {group:'グループK', date:'2026-06-25', timeJST:'04:00', timeVN:'02:00', home:'COD', away:'UZB', venue:'AT&T Stadium'},
+  {group:'グループK', date:'2026-06-30', timeJST:'05:00', timeVN:'03:00', home:'POR', away:'UZB', venue:'Rose Bowl'},
+  {group:'グループK', date:'2026-06-30', timeJST:'05:00', timeVN:'03:00', home:'COL', away:'COD', venue:'Levi's Stadium'},
+  // GROUP L
+  {group:'グループL', date:'2026-06-21', timeJST:'09:00', timeVN:'07:00', home:'ENG', away:'PAN', venue:'SoFi Stadium'},
+  {group:'グループL', date:'2026-06-21', timeJST:'03:00', timeVN:'01:00', home:'CRO', away:'GHA', venue:'MetLife Stadium'},
+  {group:'グループL', date:'2026-06-26', timeJST:'07:00', timeVN:'05:00', home:'ENG', away:'GHA', venue:'Estadio Azteca'},
+  {group:'グループL', date:'2026-06-26', timeJST:'04:00', timeVN:'02:00', home:'PAN', away:'CRO', venue:'AT&T Stadium'},
+  {group:'グループL', date:'2026-07-01', timeJST:'05:00', timeVN:'03:00', home:'ENG', away:'CRO', venue:'Rose Bowl'},
+  {group:'グループL', date:'2026-07-01', timeJST:'05:00', timeVN:'03:00', home:'GHA', away:'PAN', venue:'Levi's Stadium'},
+  // ラウンド16以降（予定）
+  {group:'決勝トーナメント', date:'2026-07-04', timeJST:'09:00', timeVN:'07:00', home:'1A', away:'2B', venue:'MetLife Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-04', timeJST:'05:00', timeVN:'03:00', home:'1C', away:'2D', venue:'SoFi Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-05', timeJST:'09:00', timeVN:'07:00', home:'1B', away:'2A', venue:'Estadio Azteca', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-05', timeJST:'05:00', timeVN:'03:00', home:'1D', away:'2C', venue:'AT&T Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-06', timeJST:'09:00', timeVN:'07:00', home:'1E', away:'2F', venue:'Rose Bowl', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-06', timeJST:'05:00', timeVN:'03:00', home:'1G', away:'2H', venue:'Gillette Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-07', timeJST:'09:00', timeVN:'07:00', home:'1F', away:'2E', venue:'Lincoln Financial', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-07', timeJST:'05:00', timeVN:'03:00', home:'1H', away:'2G', venue:'BC Place', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-08', timeJST:'09:00', timeVN:'07:00', home:'1I', away:'2J', venue:'MetLife Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-08', timeJST:'05:00', timeVN:'03:00', home:'1K', away:'2L', venue:'SoFi Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-09', timeJST:'09:00', timeVN:'07:00', home:'1J', away:'2I', venue:'Estadio Azteca', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-09', timeJST:'05:00', timeVN:'03:00', home:'1L', away:'2K', venue:'AT&T Stadium', ro:'R16'},
+  {group:'決勝トーナメント', date:'2026-07-14', timeJST:'09:00', timeVN:'07:00', home:'QF1', away:'QF2', venue:'MetLife Stadium', ro:'QF'},
+  {group:'決勝トーナメント', date:'2026-07-14', timeJST:'05:00', timeVN:'03:00', home:'QF3', away:'QF4', venue:'SoFi Stadium', ro:'QF'},
+  {group:'決勝トーナメント', date:'2026-07-15', timeJST:'09:00', timeVN:'07:00', home:'QF5', away:'QF6', venue:'Estadio Azteca', ro:'QF'},
+  {group:'決勝トーナメント', date:'2026-07-15', timeJST:'05:00', timeVN:'03:00', home:'QF7', away:'QF8', venue:'AT&T Stadium', ro:'QF'},
+  {group:'決勝トーナメント', date:'2026-07-19', timeJST:'09:00', timeVN:'07:00', home:'SF1', away:'SF2', venue:'MetLife Stadium', ro:'SF'},
+  {group:'決勝トーナメント', date:'2026-07-19', timeJST:'05:00', timeVN:'03:00', home:'SF3', away:'SF4', venue:'Rose Bowl', ro:'SF'},
+  {group:'決勝トーナメント', date:'2026-07-22', timeJST:'09:00', timeVN:'07:00', home:'3位', away:'4位', venue:'Estadio Azteca', ro:'3位決定戦'},
+  {group:'決勝トーナメント', date:'2026-07-26', timeJST:'09:00', timeVN:'07:00', home:'優勝チーム', away:'準優勝チーム', venue:'MetLife Stadium, NJ', ro:'決勝'},
+]
+
+
 const UNIT_OPTIONS = [10000,50000,100000,200000,500000]
 const LOTS_OPTIONS = [1,2,3,4,5,6,7,8,9,10]
 const GROUPS = ['グループA','グループB','グループC','グループD','グループE','グループF','グループG','グループH','グループI','グループJ','グループK','グループL']
@@ -369,6 +774,7 @@ const INIT_STATE = {
   winner:null,
   status:'open',
   eliminated:[],
+  participantPasswords:{}, // { name: hashedPassword }
 }
 
 const fmt = n => n.toLocaleString('ja-JP') + ' WCT'
@@ -672,6 +1078,111 @@ function Countdown() {
   )
 }
 
+// ── Squad Modal ───────────────────────────────────────────
+function SquadModal({ teamId, onClose }) {
+  const team = TEAMS.find(t => t.id === teamId)
+  const players = SQUADS[teamId] || []
+  const byPos = { GK:[], DF:[], MF:[], FW:[] }
+  players.forEach(p => { if(byPos[p.pos]) byPos[p.pos].push(p) })
+  const posColor = { GK:'var(--blue)', DF:'var(--green)', MF:'var(--gold)', FW:'var(--red)' }
+  const posLabel = { GK:'GK ゴールキーパー', DF:'DF ディフェンダー', MF:'MF ミッドフィルダー', FW:'FW フォワード' }
+  useEffect(()=>{ document.body.style.overflow='hidden'; return ()=>{ document.body.style.overflow='' } },[])
+  return(
+    <div onClick={onClose} style={{position:'fixed',inset:0,zIndex:500,background:'rgba(0,0,0,0.88)',backdropFilter:'blur(10px)',display:'flex',alignItems:'center',justifyContent:'center',padding:16}}>
+      <div onClick={e=>e.stopPropagation()} style={{background:'var(--bg2)',border:'1px solid rgba(0,212,255,0.25)',borderRadius:20,width:'100%',maxWidth:540,maxHeight:'85vh',overflow:'hidden',display:'flex',flexDirection:'column',boxShadow:'0 24px 80px rgba(0,0,0,0.7)'}}>
+        <div style={{padding:'18px 22px',borderBottom:'1px solid var(--border)',background:'linear-gradient(135deg,rgba(0,212,255,0.07) 0%,transparent 100%)',display:'flex',alignItems:'center',justifyContent:'space-between'}}>
+          <div style={{display:'flex',alignItems:'center',gap:14}}>
+            <span style={{fontSize:48,lineHeight:1}}>{team?.flag}</span>
+            <div>
+              <div style={{fontFamily:"'Barlow Condensed',sans-serif",fontWeight:900,fontSize:24,color:'#fff'}}>{team?.name}</div>
+              <div style={{fontSize:11,color:'var(--text2)',letterSpacing:'.08em'}}>{team?.en} · {team?.region}</div>
+            </div>
+          </div>
+          <button onClick={onClose} style={{background:'rgba(255,255,255,0.06)',border:'1px solid var(--border)',borderRadius:10,color:'var(--text2)',cursor:'pointer',padding:'7px 14px',fontSize:12,fontFamily:'inherit'}}>✕ 閉じる</button>
+        </div>
+        <div style={{overflowY:'auto',padding:'16px 20px'}}>
+          {players.length===0?<div style={{textAlign:'center',color:'var(--text3)',padding:40}}>選手データなし</div>:
+            Object.entries(byPos).map(([pos,list])=>list.length===0?null:(
+              <div key={pos} style={{marginBottom:14}}>
+                <div style={{fontSize:10,fontWeight:800,color:posColor[pos],letterSpacing:'.12em',marginBottom:7,textTransform:'uppercase',borderLeft:`3px solid ${posColor[pos]}`,paddingLeft:8}}>{posLabel[pos]}</div>
+                {list.map((p,i)=>(
+                  <div key={i} style={{display:'flex',alignItems:'center',justifyContent:'space-between',padding:'7px 10px',borderRadius:8,marginBottom:3,background:'rgba(255,255,255,0.03)',border:'1px solid var(--border)'}}>
+                    <span style={{fontWeight:600,fontSize:13}}>{p.name}</span>
+                    <span style={{fontSize:11,color:'var(--text3)',background:'rgba(255,255,255,0.05)',padding:'2px 8px',borderRadius:6}}>{p.club}</span>
+                  </div>
+                ))}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── Schedule Page ─────────────────────────────────────────
+function SchedulePage() {
+  const [groupFilter,setGroupFilter]=useState('全て')
+  const [squadTeam,setSquadTeam]=useState(null)
+  const allGroups=['全て',...Array.from(new Set(SCHEDULE.map(s=>s.group)))]
+  const filtered=groupFilter==='全て'?SCHEDULE:SCHEDULE.filter(s=>s.group===groupFilter)
+  const byDate={}
+  filtered.forEach(m=>{ if(!byDate[m.date])byDate[m.date]=[]; byDate[m.date].push(m) })
+  const getTeam=id=>TEAMS.find(t=>t.id===id)
+  const roLabel={R16:'ラウンド16',QF:'準々決勝',SF:'準決勝'}
+
+  return(
+    <div className="page fade-up">
+      {squadTeam&&<SquadModal teamId={squadTeam} onClose={()=>setSquadTeam(null)}/>}
+      <div className="section-title">📅 試合スケジュール</div>
+      <div style={{background:'rgba(0,212,255,0.06)',border:'1px solid rgba(0,212,255,0.2)',borderRadius:12,padding:'12px 16px',marginBottom:16,fontSize:12,color:'var(--text2)',lineHeight:1.8}}>
+        🇯🇵 <strong style={{color:'var(--gold)'}}>日本時間 (JST)</strong> と 🇻🇳 <strong style={{color:'var(--green)'}}>ベトナム時間 (ICT)</strong> を併記<br/>
+        ※ 国旗をタップすると選手一覧が表示されます
+      </div>
+      <div className="filter-bar" style={{marginBottom:20}}>
+        {allGroups.map(g=><button key={g} className={`filter-pill${groupFilter===g?' active':''}`} onClick={()=>setGroupFilter(g)}>{g.replace('グループ','G')}</button>)}
+      </div>
+      {Object.entries(byDate).map(([date,matches])=>{
+        const d=new Date(date+'T00:00:00')
+        const dateStr=d.toLocaleDateString('ja-JP',{month:'long',day:'numeric',weekday:'short'})
+        return(
+          <div key={date} style={{marginBottom:22}}>
+            <div style={{fontSize:12,fontWeight:700,color:'var(--blue)',letterSpacing:'.1em',marginBottom:10,borderBottom:'1px solid var(--border2)',paddingBottom:6}}>📅 {dateStr}</div>
+            {matches.map((m,i)=>{
+              const ht=getTeam(m.home); const at=getTeam(m.away); const isJPN=m.home==='JPN'||m.away==='JPN'
+              return(
+                <div key={i} style={{background:isJPN?'rgba(0,212,255,0.06)':'var(--card)',border:`1px solid ${isJPN?'rgba(0,212,255,0.25)':'var(--border)'}`,borderRadius:14,padding:'14px 16px',marginBottom:8}}>
+                  <div style={{display:'flex',justifyContent:'space-between',marginBottom:10}}>
+                    <span style={{fontSize:10,color:'var(--text3)',letterSpacing:'.06em'}}>{m.group}{m.ro?` · ${roLabel[m.ro]||m.ro}`:''}</span>
+                    {isJPN&&<span style={{fontSize:10,color:'var(--blue)',fontWeight:700,border:'1px solid rgba(0,212,255,0.3)',padding:'1px 7px',borderRadius:8}}>🇯🇵 JAPAN</span>}
+                  </div>
+                  <div style={{display:'flex',alignItems:'center',gap:8}}>
+                    <div onClick={()=>ht&&setSquadTeam(ht.id)} style={{flex:1,textAlign:'right',cursor:ht?'pointer':'default'}}>
+                      <div style={{fontSize:ht?28:16,lineHeight:1,marginBottom:3}}>{ht?.flag||'🏳'}</div>
+                      <div style={{fontSize:12,fontWeight:700,color:ht?.id==='JPN'?'var(--blue)':'#fff'}}>{ht?.name||m.home}</div>
+                    </div>
+                    <div style={{textAlign:'center',minWidth:96}}>
+                      <div style={{background:'rgba(255,255,255,0.05)',borderRadius:10,padding:'8px 10px'}}>
+                        <div style={{fontSize:15,fontWeight:800,color:'var(--gold)',fontFamily:"'Barlow Condensed',sans-serif"}}>🇯🇵 {m.timeJST}</div>
+                        <div style={{fontSize:12,color:'var(--green)',marginTop:2}}>🇻🇳 {m.timeVN}</div>
+                      </div>
+                    </div>
+                    <div onClick={()=>at&&setSquadTeam(at.id)} style={{flex:1,textAlign:'left',cursor:at?'pointer':'default'}}>
+                      <div style={{fontSize:at?28:16,lineHeight:1,marginBottom:3}}>{at?.flag||'🏳'}</div>
+                      <div style={{fontSize:12,fontWeight:700,color:at?.id==='JPN'?'var(--blue)':'#fff'}}>{at?.name||m.away}</div>
+                    </div>
+                  </div>
+                  <div style={{textAlign:'center',marginTop:8,fontSize:10,color:'var(--text3)'}}>📍 {m.venue}</div>
+                </div>
+              )
+            })}
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 // ── SurvivalBoard ─────────────────────────────────────────
 function SurvivalBoard({ state, stats }) {
   const elim = state.eliminated||[]
@@ -847,20 +1358,60 @@ function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
 // ── Page: REGISTER ────────────────────────────────────────
 function RegisterPage({ state, setState }) {
   const [name,setName]=useState('')
-  const [step,setStep]=useState('name')
+  const [pass,setPass]=useState('')
+  const [passConfirm,setPassConfirm]=useState('')
+  const [passError,setPassError]=useState('')
+  const [step,setStep]=useState('name') // name | pass | bet | done
   const [participant,setParticipant]=useState(null)
   const [bets,setBets]=useState([])
   const [filter,setFilter]=useState('全て')
   const [showEx,setShowEx]=useState(false)
   const [editMode,setEditMode]=useState(false)
   const [saving,setSaving]=useState(false)
+  const [squadTeam,setSquadTeam]=useState(null)
+
+  const simpleHash = s => s.split('').reduce((a,c)=>Math.imul(31,a)+c.charCodeAt(0)|0,0).toString()
 
   const handleStart=()=>{
     const n=name.trim(); if(!n)return
     const ex=state.participants.find(p=>p.name===n)
-    if(ex){setParticipant(ex);setBets(ex.bets.map(b=>({teamId:b.teamId,lots:b.lots})));setEditMode(true)}
-    else{setParticipant({id:Date.now().toString(),name:n,bets:[]});setBets([]);setEditMode(false)}
-    setStep('bet')
+    const passwords=state.participantPasswords||{}
+    if(ex){
+      // 既存参加者 → パスワード確認が必要
+      if(passwords[n]){
+        setParticipant(ex)
+        setEditMode(true)
+        setStep('pass')
+      } else {
+        setParticipant(ex);setBets(ex.bets.map(b=>({teamId:b.teamId,lots:b.lots})));setEditMode(true)
+        setStep('bet')
+      }
+    } else {
+      // 新規参加者 → パスワード設定
+      setParticipant({id:Date.now().toString(),name:n,bets:[]});setBets([]);setEditMode(false)
+      setStep('pass')
+    }
+  }
+
+  const handlePassSubmit=()=>{
+    const passwords=state.participantPasswords||{}
+    const n=participant?.name
+    if(editMode && passwords[n]){
+      // パスワード照合
+      if(simpleHash(pass) !== passwords[n]){
+        setPassError('パスワードが違います')
+        return
+      }
+      setBets(participant.bets.map(b=>({teamId:b.teamId,lots:b.lots})))
+      setPassError('')
+      setStep('bet')
+    } else {
+      // 新規パスワード設定
+      if(!pass){ setPassError('パスワードを入力してください'); return }
+      if(pass !== passConfirm){ setPassError('パスワードが一致しません'); return }
+      setPassError('')
+      setStep('bet')
+    }
   }
   const toggleTeam=id=>setBets(prev=>prev.find(b=>b.teamId===id)?prev.filter(b=>b.teamId!==id):[...prev,{teamId:id,lots:1}])
   const setLots=(id,lots)=>setBets(prev=>prev.map(b=>b.teamId===id?{...b,lots}:b))
@@ -870,14 +1421,68 @@ function RegisterPage({ state, setState }) {
     setSaving(true)
     const fb=bets.map(b=>({teamId:b.teamId,lots:b.lots,amount:b.lots*state.settings.unit}))
     const newP={...participant,bets:fb}
-    await setState(s=>({...s,participants:s.participants.find(p=>p.id===newP.id)?s.participants.map(p=>p.id===newP.id?newP:p):[...s.participants,newP]}))
+    await setState(s=>{
+      const newParticipants=s.participants.find(p=>p.id===newP.id)?s.participants.map(p=>p.id===newP.id?newP:p):[...s.participants,newP]
+      const newPasswords={...(s.participantPasswords||{})}
+      if(pass && !newPasswords[newP.name]){
+        // simpleHash: 新規参加者のパスワードを保存
+        const h=pass.split('').reduce((a,c)=>Math.imul(31,a)+c.charCodeAt(0)|0,0).toString()
+        newPasswords[newP.name]=h
+      }
+      return {...s,participants:newParticipants,participantPasswords:newPasswords}
+    })
     setSaving(false)
-    stadiumAudio.roar() // 投票完了 → 歓声
+    stadiumAudio.roar()
     setStep('done')
   }
 
   const allGroups=['全て',...GROUPS]
   const filtered=filter==='全て'?TEAMS:TEAMS.filter(t=>t.region===filter)
+
+  if(step==='pass') return(
+    <div className="page fade-up" style={{maxWidth:440}}>
+      <div className="section-title">🔐 {editMode?'パスワード確認':'パスワード設定'}</div>
+      <div className="card">
+        {!editMode&&(
+          <div style={{fontSize:12,color:'var(--text2)',marginBottom:16,lineHeight:1.8}}>
+            <strong style={{color:'var(--gold)'}}>{participant?.name}</strong> さん、はじめまして！<br/>
+            自分の投票を他の人が変更できないよう、パスワードを設定してください。
+          </div>
+        )}
+        {editMode&&(
+          <div style={{fontSize:12,color:'var(--text2)',marginBottom:16}}>
+            <strong style={{color:'var(--gold)'}}>{participant?.name}</strong> さんのパスワードを入力してください。
+          </div>
+        )}
+        <label style={{fontSize:11,color:'var(--text2)',display:'block',marginBottom:8,letterSpacing:'.06em',textTransform:'uppercase'}}>
+          {editMode?'パスワード':'新しいパスワード'}
+        </label>
+        <input type="password" className="input" value={pass} onChange={e=>{setPass(e.target.value);setPassError('')}}
+          onKeyDown={e=>e.key==='Enter'&&handlePassSubmit()}
+          placeholder="パスワードを入力" autoFocus/>
+        {!editMode&&(
+          <>
+            <label style={{fontSize:11,color:'var(--text2)',display:'block',margin:'12px 0 8px',letterSpacing:'.06em',textTransform:'uppercase'}}>パスワード（確認）</label>
+            <input type="password" className="input" value={passConfirm} onChange={e=>{setPassConfirm(e.target.value);setPassError('')}}
+              onKeyDown={e=>e.key==='Enter'&&handlePassSubmit()}
+              placeholder="もう一度入力"/>
+          </>
+        )}
+        {passError&&<div style={{color:'var(--red)',fontSize:12,marginTop:8,fontWeight:600}}>⚠ {passError}</div>}
+        <div style={{display:'flex',gap:10,marginTop:16}}>
+          <button className="btn btn-ghost" style={{flex:1}} onClick={()=>{setStep('name');setPass('');setPassConfirm('');setPassError('')}}>← 戻る</button>
+          <button className="btn btn-gold" style={{flex:2}} onClick={handlePassSubmit}>
+            {editMode?'ログイン →':'設定して投票へ →'}
+          </button>
+        </div>
+        {!editMode&&(
+          <div style={{fontSize:10,color:'var(--text3)',marginTop:10,lineHeight:1.6}}>
+            ※ パスワードはブラウザに保存されません。忘れた場合は管理者に削除を依頼してください。
+          </div>
+        )}
+      </div>
+    </div>
+  )
 
   if(step==='done') return(
     <div className="page done-page fade-up">
@@ -948,6 +1553,7 @@ function RegisterPage({ state, setState }) {
         </div>
       )}
 
+      {squadTeam&&<SquadModal teamId={squadTeam} onClose={()=>setSquadTeam(null)}/>}
       <div className="filter-bar">
         {allGroups.map(g=><button key={g} className={`filter-pill${filter===g?' active':''}`} onClick={()=>setFilter(g)}>{g}</button>)}
       </div>
@@ -957,7 +1563,7 @@ function RegisterPage({ state, setState }) {
           const bet=bets.find(b=>b.teamId===team.id); const sel=!!bet; const isJPN=team.id==='JPN'
           return(
             <div key={team.id} className={`team-card${sel?' selected':''}${isJPN?' jpn':''}`} onClick={()=>toggleTeam(team.id)}>
-              <span className="team-flag">{team.flag}</span>
+              <span className="team-flag" onClick={e=>{e.stopPropagation();setSquadTeam(team.id)}} title="タップで選手一覧" style={{cursor:'zoom-in'}}>{team.flag}</span>
               <div className="team-name">{team.name}</div>
               {sel&&<div className="team-lots">{bet.lots}口</div>}
               <div className="team-group">{team.region}</div>
@@ -1194,7 +1800,10 @@ function AdminPage({ state, setState }) {
             <div key={p.id} className="card" style={{marginBottom:8}}>
               <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:10}}>
                 <div><div style={{fontWeight:700,fontSize:15}}>{p.name}</div><div style={{fontSize:11,color:'var(--text3)'}}>合計: {fmt(p.bets.reduce((a,b)=>a+b.amount,0))}</div></div>
-                <button className="btn btn-danger" style={{padding:'5px 10px',fontSize:11}} onClick={()=>{if(window.confirm(`${p.name}さんを削除しますか？`))doSet(s=>({...s,participants:s.participants.filter(x=>x.id!==p.id)}))}}>削除</button>
+                <div style={{display:'flex',gap:6}}>
+                  <button className="btn btn-danger" style={{padding:'5px 10px',fontSize:11}} onClick={()=>{if(window.confirm(`${p.name}さんを削除しますか？`))doSet(s=>({...s,participants:s.participants.filter(x=>x.id!==p.id)}))}}>削除</button>
+                  <button className="btn btn-ghost" style={{padding:'5px 10px',fontSize:11}} onClick={()=>{if(window.confirm(`${p.name}さんのパスワードをリセットしますか？`)){const newPw={...(state.participantPasswords||{})};delete newPw[p.name];doSet(s=>({...s,participantPasswords:newPw}))}}}>🔓 PW</button>
+                </div>
               </div>
               {p.bets.map(b=>{const team=TEAMS.find(t=>t.id===b.teamId);return(
                 <div key={b.teamId} style={{display:'flex',gap:8,alignItems:'center',padding:'5px 0',borderTop:'1px solid var(--border)'}}>
@@ -1380,7 +1989,7 @@ export default function App() {
     finally{ setSyncing(false) }
   },[])
 
-  const PAGES=[['top','🏠 TOP'],['register','⚽ 投票'],['status','📊 状況'],['odds','📈 倍率'],['result','🏆 結果'],['admin','⚙️ 管理']]
+  const PAGES=[['top','🏠 TOP'],['register','⚽ 投票'],['status','📊 状況'],['odds','📈 倍率'],['schedule','📅 日程'],['result','🏆 結果'],['admin','⚙️ 管理']]
 
   if(loading) return(
     <div className="loading">
@@ -1406,6 +2015,7 @@ export default function App() {
       {page==='register' &&<RegisterPage state={state} setState={setState}/>}
       {page==='status'   &&<StatusPage   state={state}/>}
       {page==='odds'     &&<OddsPage     state={state}/>}
+      {page==='schedule' &&<SchedulePage/>}
       {page==='result'   &&<ResultPage   state={state}/>}
       {page==='admin'    &&<AdminPage    state={state} setState={setState}/>}
       <AudioPlayer/>
