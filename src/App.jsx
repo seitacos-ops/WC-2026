@@ -1,4 +1,4 @@
-             import { useState, useCallback, useEffect, useRef } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { dbLoad, dbSave, dbSubscribe } from './firebase'
 
 // ── Stadium Audio Engine ─────────────────────────────────
@@ -709,7 +709,7 @@ const SCHEDULE = [
   {group:'グループG', date:'2026-06-21', timeJST:'04:00', timeVN:'02:00', home:'BEL', away:'EGY', venue:'SoFiスタジアム, ロサンゼルス'},
   {group:'グループD', date:'2026-06-21', timeJST:'13:00', timeVN:'11:00', home:'TUR', away:'PAR', venue:'エスタディオBBVA, モンテレイ'},
   {group:'グループF', date:'2026-06-21', timeJST:'13:00', timeVN:'11:00', home:'JPN', away:'TUN', venue:'エスタディオBBVA, モンテレイ'},
-  {group:'グループH', date:'2026-06-21', timeJST:'11:00', timeVN:'09:00', home:'チュニジア', away:'JPN', venue:''},
+  {group:'グループH', date:'2026-06-21', timeJST:'11:00', timeVN:'09:00', home:'TUN', away:'JPN', venue:''},
   // 6/22(月)
   {group:'グループI', date:'2026-06-22', timeJST:'01:00', timeVN:'23:00', home:'ESP', away:'KSA', venue:'メルセデス・ベンツ・スタジアム, アトランタ'},
   {group:'グループJ', date:'2026-06-22', timeJST:'04:00', timeVN:'02:00', home:'BEL', away:'IRN', venue:'SoFiスタジアム, ロサンゼルス'},
@@ -731,17 +731,17 @@ const SCHEDULE = [
   {group:'グループB', date:'2026-06-25', timeJST:'04:00', timeVN:'02:00', home:'SUI', away:'CAN', venue:'BCプレイス, バンクーバー'},
   {group:'グループC', date:'2026-06-25', timeJST:'04:00', timeVN:'02:00', home:'BIH', away:'QAT', venue:'ルーメン・フィールド, シアトル'},
   {group:'グループC', date:'2026-06-25', timeJST:'07:00', timeVN:'05:00', home:'MAR', away:'HAI', venue:'メルセデス・ベンツ・スタジアム, アトランタ'},
-  {group:'グループB', date:'2026-06-25', timeJST:'08:00', timeVN:'06:00', home:'パナマ', away:'CRO', venue:'BMOフィールド, トロント'},
+  {group:'グループB', date:'2026-06-25', timeJST:'08:00', timeVN:'06:00', home:'PAN', away:'CRO', venue:'BMOフィールド, トロント'},
   {group:'グループC', date:'2026-06-25', timeJST:'07:00', timeVN:'05:00', home:'SCO', away:'BRA', venue:'ハードロック・スタジアム, マイアミ'},
   {group:'グループA', date:'2026-06-25', timeJST:'10:00', timeVN:'08:00', home:'CZE', away:'MEX', venue:'エスタディオAKRON, グアダラハラ'},
   {group:'グループA', date:'2026-06-25', timeJST:'10:00', timeVN:'08:00', home:'RSA', away:'KOR', venue:'エスタディオBBVA, モンテレイ'},
   // 6/26(金)
   {group:'グループE', date:'2026-06-26', timeJST:'05:00', timeVN:'03:00', home:'CUW', away:'COL', venue:'リンカーン・ファイナンシャル・フィールド, フィラデルフィア'},
-  {group:'グループF', date:'2026-06-26', timeJST:'08:00', timeVN:'06:00', home:'チュニジア', away:'オランダ', venue:'アロー・ヘッド・スタジアム, カンザスシティ'},
+  {group:'グループF', date:'2026-06-26', timeJST:'08:00', timeVN:'06:00', home:'TUN', away:'NED', venue:'アロー・ヘッド・スタジアム, カンザスシティ'},
   {group:'グループF', date:'2026-06-26', timeJST:'08:00', timeVN:'06:00', home:'JPN', away:'SWE', venue:'AT&Tスタジアム, アーリントン'},
   {group:'グループE', date:'2026-06-26', timeJST:'05:00', timeVN:'03:00', home:'ECU', away:'GER', venue:'メトライフ・スタジアム, ニューヨーク'},
-  {group:'グループD', date:'2026-06-26', timeJST:'11:00', timeVN:'09:00', home:'トルコ', away:'USA', venue:'SoFiスタジアム, ロサンゼルス'},
-  {group:'グループD', date:'2026-06-26', timeJST:'11:00', timeVN:'09:00', home:'パラグアイ', away:'AUS', venue:'リーバイス・スタジアム, サンフランシスコ'},
+  {group:'グループD', date:'2026-06-26', timeJST:'11:00', timeVN:'09:00', home:'TUR', away:'USA', venue:'SoFiスタジアム, ロサンゼルス'},
+  {group:'グループD', date:'2026-06-26', timeJST:'11:00', timeVN:'09:00', home:'PAR', away:'AUS', venue:'リーバイス・スタジアム, サンフランシスコ'},
   // 6/27(土)
   {group:'グループG', date:'2026-06-27', timeJST:'04:00', timeVN:'02:00', home:'NOR', away:'FRA', venue:'ジレット・スタジアム, フォックスボロ'},
   {group:'グループH', date:'2026-06-27', timeJST:'04:00', timeVN:'02:00', home:'SEN', away:'IRQ', venue:'BMOフィールド, トロント'},
