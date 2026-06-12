@@ -1506,6 +1506,31 @@ function RegisterPage({ state, setState, onShowSquad }) {
     </div>
   )
 
+  // 締切・結果確定時は投票ブロック
+  if(state.status !== 'open') return(
+    <div className="page fade-up" style={{textAlign:'center',paddingTop:60}}>
+      <div style={{fontSize:72,marginBottom:20}}>{state.status==='finished'?'🏆':'🔒'}</div>
+      <div style={{fontFamily:"'Barlow Condensed',sans-serif",fontWeight:900,fontSize:32,color:state.status==='finished'?'var(--gold)':'var(--red)',marginBottom:12}}>
+        {state.status==='finished'?'結果確定済み':'投票は締め切られました'}
+      </div>
+      <div style={{color:'var(--text2)',fontSize:14,lineHeight:1.8,marginBottom:32,whiteSpace:'pre-line'}}>
+        {state.status==='finished'
+          ?'優勝国が確定しています。\n結果ページをご確認ください。'
+          :'現在、新規の投票・変更はできません。\n管理者が投票を再開するまでお待ちください。'}
+      </div>
+      <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}}>
+        <button className="btn btn-ghost" style={{padding:'12px 24px'}} onClick={()=>{}}>
+          📊 投票状況を見る
+        </button>
+        {state.status==='finished'&&(
+          <button className="btn btn-gold" style={{padding:'12px 24px'}}>
+            🏆 結果を確認する
+          </button>
+        )}
+      </div>
+    </div>
+  )
+
   if(step==='name') return(
     <div className="page fade-up">
       <div className="section-title">👤 参加者登録</div>
@@ -2000,7 +2025,7 @@ export default function App() {
     finally{ setSyncing(false) }
   },[])
 
-  const PAGES=[['top','🏠 TOP'],['register','⚽ 投票'],['status','📊 状況'],['odds','📈 倍率'],['schedule','📅 日程'],['result','🏆 結果'],['admin','⚙️ 管理']]
+  const PAGES=[['top','🏠 TOP'],['register', state.status==='open'?'⚽ 投票':'🔒 投票'],['status','📊 状況'],['odds','📈 倍率'],['schedule','📅 日程'],['result','🏆 結果'],['admin','⚙️ 管理']]
 
   if(loading) return(
     <div className="loading">
