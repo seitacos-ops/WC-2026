@@ -1367,7 +1367,7 @@ function TopPage({ state, setPage, syncing, lastSync, onRefresh }) {
 }
 
 // ── Page: REGISTER ────────────────────────────────────────
-function RegisterPage({ state, setState, onShowSquad }) {
+function RegisterPage({ state, setState, onShowSquad, setPage }) {
   const [name,setName]=useState('')
   const [pass,setPass]=useState('')
   const [passConfirm,setPassConfirm]=useState('')
@@ -1519,11 +1519,11 @@ function RegisterPage({ state, setState, onShowSquad }) {
           :'現在、新規の投票・変更はできません。\n管理者が投票を再開するまでお待ちください。'}
       </div>
       <div style={{display:'flex',gap:10,justifyContent:'center',flexWrap:'wrap'}}>
-        <button className="btn btn-ghost" style={{padding:'12px 24px'}} onClick={()=>{}}>
+        <button className="btn btn-ghost" style={{padding:'12px 24px'}} onClick={()=>setPage('status')}>
           📊 投票状況を見る
         </button>
         {state.status==='finished'&&(
-          <button className="btn btn-gold" style={{padding:'12px 24px'}}>
+          <button className="btn btn-gold" style={{padding:'12px 24px'}} onClick={()=>setPage('result')}>
             🏆 結果を確認する
           </button>
         )}
@@ -2048,7 +2048,7 @@ export default function App() {
       </div>
 
       {page==='top'      &&<TopPage      state={state} setPage={setPage} syncing={syncing} lastSync={lastSync} onRefresh={onRefresh}/>}
-      {page==='register' &&<RegisterPage state={state} setState={setState} onShowSquad={setGlobalSquadTeam}/>}
+      {page==='register' &&<RegisterPage state={state} setState={setState} onShowSquad={setGlobalSquadTeam} setPage={setPage}/>}
       {page==='status'   &&<StatusPage   state={state}/>}
       {page==='odds'     &&<OddsPage     state={state}/>}
       {page==='schedule' &&<SchedulePage onShowSquad={setGlobalSquadTeam}/>}
